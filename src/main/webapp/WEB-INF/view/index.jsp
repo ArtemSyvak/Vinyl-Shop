@@ -22,6 +22,7 @@
                value="${_csrf.token}"/>
     </form>
     <a href="toLogin">Log in</a>
+        <br>
 
 <form action="/logout" method="post">
     <input type="submit" value="Log out">
@@ -29,8 +30,8 @@
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
 </form>
-<security:authorize  access="hasAnyRole('ROLE_ADMIN')">
-    <a href="admin_page">admin Page</a>
+<security:authorize  access="hasRole('ROLE_ADMIN')">
+    <a href="admin/admin_page">admin Page</a>
 </security:authorize>
 
 

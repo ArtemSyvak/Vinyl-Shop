@@ -30,38 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
         provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
         return  provider;
     }
 
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+    public InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemory(){
+        return new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>();
     }
-
-
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/*").permitAll()
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-//                .failureUrl("/login?error=true")
-                .usernameParameter("username")
-                .passwordParameter("password").and()
-                .logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).and()
-                .csrf();
-
-    }
-
 
     @Autowired
     public void configureInMemory(AuthenticationManagerBuilder auth, AuthenticationProvider provider)throws Exception{
@@ -74,7 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         auth.authenticationProvider(provider);
     }
 
-    public InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemory(){
-        return new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>();
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/*").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error=true")
+                .usernameParameter("username")
+                .passwordParameter("password").and()
+                .logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).and()
+                .csrf();
+
     }
+
+
+
 }

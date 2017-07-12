@@ -39,8 +39,4 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("admin_page")
-    public String onAdm(){
-        return "admin/adminPage";
-    }
 }
