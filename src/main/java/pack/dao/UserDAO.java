@@ -7,5 +7,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserDAO extends JpaRepository<User,Integer> {
     @Query("from User u where u.username =:username")
-    public User findByUserName(@Param("username") String username);
+    User findByUserName(@Param("username") String username);
 }
