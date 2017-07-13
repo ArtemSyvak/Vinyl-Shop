@@ -16,13 +16,12 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.ROLE_USER;
-
     private boolean accountNonExpired = true;
     private boolean accountNonLocked= true;
     private boolean credentialsNonExpired = true;
     private boolean enabled = true;
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ROLE_USER;
 
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

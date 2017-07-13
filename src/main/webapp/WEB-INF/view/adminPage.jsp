@@ -1,3 +1,4 @@
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Nikita
@@ -12,5 +13,31 @@
 </head>
 <body>
     Hi! you are ADMIN!!!!!
+
+    <sf:form action="saveProduct" modelAttribute="product" method="post">
+        Price
+        <br>
+        <sf:input path="price"></sf:input>
+        <br>
+        Artist
+        <br>
+        <sf:input path="artist"></sf:input>
+        <br>
+        Album
+        <br>
+        <sf:input path="album"></sf:input>
+        <br>
+        Description
+        <br>
+        <sf:input path="description"></sf:input>
+        <br>
+        <%--Order--%>
+        <%--<br>--%>
+        <%--<sf:input path="order"></sf:input>--%>
+        <%--<br>--%>
+        <br>
+        <input type="submit" value="Save!!!">
+    </sf:form>
+
 </body>
 </html>
