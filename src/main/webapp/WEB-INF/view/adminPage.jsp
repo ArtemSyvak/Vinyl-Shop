@@ -12,16 +12,32 @@
     <title>Title</title>
 </head>
 <body>
-    <sf:form modelAttribute="product" action="saveProduct" method="post">
-        Name <sf:input path="productName"></sf:input><br>
-        Artist: <sf:input path="artist"></sf:input><br>
-        Genre: <sf:input path="genre"></sf:input><br>
-        Description: <sf:input path="description"></sf:input><br>
-        Price: <sf:input path="price"></sf:input><br>
-        <input type="submit">
-        <input type="hidden"
-               name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
+    Hi! you are ADMIN!!!!!
+
+    <sf:form action="saveProduct" modelAttribute="product" method="post">
+        Price
+        <br>
+        <sf:input path="price"></sf:input>
+        <br>
+        Artist
+        <br>
+        <sf:input path="artist"></sf:input>
+        <br>
+        Album
+        <br>
+        <sf:input path="album"></sf:input>
+        <br>
+        Description
+        <br>
+        <sf:input path="description"></sf:input>
+        <br>
+        <%--Order--%>
+        <%--<br>--%>
+        <%--<sf:input path="order"></sf:input>--%>
+        <%--<br>--%>
+        <br>
+        <input type="submit" value="Save!!!">
     </sf:form>
+
 </body>
 </html>
