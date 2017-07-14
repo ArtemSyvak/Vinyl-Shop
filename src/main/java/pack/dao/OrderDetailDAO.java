@@ -8,8 +8,5 @@ import pack.model.OrderDetailInfo;
 import java.util.List;
 
 public interface OrderDetailDAO extends JpaRepository<OrderDetail, Integer>{
-//    @Query("from OrderDetail od where od.id =:id")
-//    OrderDetailInfo fetchOrderDetail(int id);
-
 
 }

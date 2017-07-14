@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartInfo {
+
     private int orderNum;
-    private CustomerInfo customerInfo;
+    private UserInfo userInfo;
     private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
 
     public CartInfo() {
@@ -19,24 +20,24 @@ public class CartInfo {
         this.orderNum = orderNum;
     }
 
-    public CustomerInfo getCustomerInfo() {
-        return customerInfo;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setCustomerInfo(CustomerInfo customerInfo) {
-        this.customerInfo = customerInfo;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
-    private CartLineInfo findLineByCode(String code){
+    private CartLineInfo findLineByCode(int productId){
         for(CartLineInfo line : this.cartLines){
-            if(line.getProductInfo().getCode().equals(code)){
-                return line;
-            }
+            int id = line.getProductInfo().getCode();
+            if(id==productId)return line;
         }
         return null;
     }
 
     public void addProduct(ProductInfo productInfo, int quality) {
+
         CartLineInfo line = this.findLineByCode(productInfo.getCode());
 
         if (line == null) {
@@ -57,7 +58,8 @@ public class CartInfo {
 
     }
 
-    public void updateProduct(String code, int quanity){
+    public void updateProduct(int code, int quanity){
+
         CartLineInfo line = this.findLineByCode(code);
 
         if(line!=null){
@@ -81,7 +83,7 @@ public class CartInfo {
     }
 
     public boolean isValidCustomer(){
-        return this.customerInfo != null && this.customerInfo.isValid();
+        return this.userInfo != null && this.userInfo.isValid();
     }
 
     public int getQuantityTotal(){

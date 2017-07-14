@@ -36,11 +36,11 @@ public class AdminController {
     }
 
 
-    @PostMapping("saveProduct")
-    public String saveProduct(@ModelAttribute("product")Product product){
-        productService.save(product);
-        return "redirect:/";
-    }
+//    @PostMapping("saveProduct")
+//    public String saveProduct(@ModelAttribute("product")Product product){
+//        productService.save(product);
+//        return "redirect:/";
+//    }
 //
 //    @InitBinder("product")
 //    public void binder(WebDataBinder webDataBinder) {

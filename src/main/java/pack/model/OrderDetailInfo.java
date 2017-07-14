@@ -3,10 +3,9 @@ package pack.model;
 public class OrderDetailInfo {
 
     public int id;
-    private int productCode;
+    private int productCode; //product id
     private String productName;
-
-    private int quanity;
+    private int quantity;
     private double price;
     private double amount;
 
@@ -37,12 +36,12 @@ public class OrderDetailInfo {
         this.productName = productName;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {

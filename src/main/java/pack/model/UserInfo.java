@@ -1,6 +1,8 @@
 package pack.model;
 
-public class CustomerInfo {
+import pack.entity.User;
+
+public class UserInfo {
 
     public String name;
     public String address;
@@ -9,7 +11,7 @@ public class CustomerInfo {
 
     private boolean valid;
 
-    public CustomerInfo() {
+    public UserInfo() {
     }
 
     public String getName() {
@@ -51,4 +53,13 @@ public class CustomerInfo {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
+
+    public UserInfo(User user) {
+        this.name = user.getUsername();
+        this.address = user.getAddress();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
+    }
 }
+
+

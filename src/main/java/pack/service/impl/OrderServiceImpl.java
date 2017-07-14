@@ -1,8 +1,5 @@
 package pack.service.impl;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +15,12 @@ import pack.service.OrderService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
+
+
     @Autowired
     OrderDAO orderDAO;
 
@@ -46,11 +44,11 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderDate(new Date());
         order.setAmount(cartInfo.getAmountTotal());
 
-        CustomerInfo customerInfo = cartInfo.getCustomerInfo();
-        order.setCustomerName(customerInfo.getName());
-        order.setCustomerEmail(customerInfo.getEmail());
-        order.setCustomerPhone(customerInfo.getPhone());
-        order.setCustomerAddress(customerInfo.getAddress());
+        UserInfo userInfo = cartInfo.getUserInfo();
+        order.setCustomerName(userInfo.getName());
+        order.setCustomerEmail(userInfo.getEmail());
+        order.setCustomerPhone(userInfo.getPhone());
+        order.setCustomerAddress(userInfo.getAddress());
 
         orderDAO.save(order);
 
@@ -61,10 +59,10 @@ public class OrderServiceImpl implements OrderService {
             detail.setOrder(order);
             detail.setAmount(line.getAmount());
             detail.setPrice(line.getProductInfo().getPrice());
-            detail.setQuanity(line.getQuanity());
+            detail.setQuantity(line.getQuanity());
 
             int code = line.getProductInfo().getCode();
-            Product product = this.productDAO.findByCode(code);
+            Product product = this.productDAO.findOne(code);
             detail.setProduct(product);
 
             orderDetailDAO.save(detail);
@@ -74,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order findOrder(int orderId){
-        orderDAO.findOne(orderId);
+         return orderDAO.findOne(orderId);
     }
 
 
@@ -89,13 +87,20 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public List<OrderDetailInfo> listOrderDetailInfos(int orderId) {
-//        List<OrderDetailInfo> detailInfoList = new ArrayList<OrderDetailInfo>();
-//        OrderDetailInfo detailInfo = orderDetailDAO.fetchOrderDetail(orderId);
-//
-//        Order order = orderDAO.fi
 
-        return orderDetailDAO.findAll();
+        List<OrderDetailInfo> infoList = new ArrayList<OrderDetailInfo>();
+        OrderDetail orderDetail = orderDetailDAO.findOne(orderId);
 
-
+        for (OrderDetailInfo of: infoList) {
+            of.setId(orderDetail.getId());
+            of.setAmount(orderDetail.getAmount());
+            of.setPrice(orderDetail.getPrice());
+            of.setProductCode(orderDetail.getProduct().getCode());
+            of.setProductName(orderDetail.getProduct().getProductName());
+            of.setQuantity(orderDetail.getQuantity());
+            infoList.add(of);
+        }
+        return infoList;
     }
+
 }

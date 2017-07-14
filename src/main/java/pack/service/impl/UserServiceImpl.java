@@ -9,13 +9,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pack.model.UserInfo;
 import pack.service.UserService;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
+
     @Autowired
     UserDAO userDAO;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -32,5 +35,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userDAO.findByUserName(username);
     }
 
+    public User findOne(int id) {
+        return userDAO.findOne(id);
+    }
 
+    public UserInfo findUserInfo(int id) {
+        return new UserInfo(userDAO.findOne(id));
+    }
 }

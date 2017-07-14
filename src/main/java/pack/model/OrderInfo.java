@@ -4,16 +4,21 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderInfo {
-    private int id;
+
+
+    //Info from Order
+    private int orderId;
     private Date orderDate;
     private int orderNum;
     private double amount;
 
+    //Info from User
     private String customerName;
     private String customerAddress;
     private String customerEmail;
     private String customerPhone;
 
+    //Info from product
     List<OrderDetailInfo> details;
 
     public OrderInfo() {
@@ -22,7 +27,7 @@ public class OrderInfo {
     public OrderInfo(int id, Date orderDate, int orderNum, double amount,
                      String customerName, String customerAddress,
                      String customerEmail, String customerPhone) {
-        this.id = id;
+        this.orderId = id;
         this.orderDate = orderDate;
         this.orderNum = orderNum;
         this.amount = amount;
@@ -33,11 +38,11 @@ public class OrderInfo {
     }
 
     public int getId() {
-        return id;
+        return orderId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.orderId = id;
     }
 
     public Date getOrderDate() {

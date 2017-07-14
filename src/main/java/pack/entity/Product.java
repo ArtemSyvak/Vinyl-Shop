@@ -7,26 +7,45 @@ import java.util.Arrays;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int code;
+    private int id;
     private String productName;
     private String artist;
     private String genre;
     private String description;
+    private String image; //pathToImage
+
+    public Product(String productName, String artist, String genre, String description, String image, int releaseYear, double price) {
+        this.productName = productName;
+        this.artist = artist;
+        this.genre = genre;
+        this.description = description;
+        this.image = image;
+        this.releaseYear = releaseYear;
+        this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     private int releaseYear;
-    @Lob
-    private byte[] image;
 
     private double price;
 
     public Product() {
+
     }
 
     public int getCode() {
-        return code;
+        return id;
     }
 
     public void setCode(int code) {
-        this.code = code;
+        this.id = code;
     }
 
 
@@ -70,13 +89,7 @@ public class Product {
         this.releaseYear = releaseYear;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
 
     public double getPrice() {
         return price;
@@ -89,11 +102,12 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "code='" + code + '\'' +
+                "id=" + id +
                 ", productName='" + productName + '\'' +
                 ", artist='" + artist + '\'' +
                 ", genre='" + genre + '\'' +
                 ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
                 ", releaseYear=" + releaseYear +
                 ", price=" + price +
                 '}';

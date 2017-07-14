@@ -1,13 +1,11 @@
 package pack.model;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import pack.entity.Product;
 
 public class ProductInfo {
 
-    private int code;
+    private int productId;
     private double price;
-
     private String productName;
     private String artist;
     private String genre;
@@ -16,13 +14,22 @@ public class ProductInfo {
 
     private Boolean newProduct = false;
 
-    private CommonsMultipartFile fileData;
+    private String pathImage;
+
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
 
     public ProductInfo() {
+
     }
 
     public ProductInfo(Product product){
-        this.code = product.getCode();
+        this.productId = product.getCode();
         this.productName = product.getProductName();
         this.price = product.getPrice();
         this.artist = product.getArtist();
@@ -32,11 +39,11 @@ public class ProductInfo {
     }
 
     public int getCode() {
-        return code;
+        return productId;
     }
 
     public void setCode(int code) {
-        this.code = code;
+        this.productId = code;
     }
 
     public double getPrice() {
@@ -95,11 +102,5 @@ public class ProductInfo {
         this.newProduct = newProduct;
     }
 
-    public CommonsMultipartFile getFileData() {
-        return fileData;
-    }
 
-    public void setFileData(CommonsMultipartFile fileData) {
-        this.fileData = fileData;
-    }
 }

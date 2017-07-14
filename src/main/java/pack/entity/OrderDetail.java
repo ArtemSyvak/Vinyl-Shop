@@ -15,7 +15,7 @@ public class OrderDetail {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PRODUCT_ID", foreignKey = @ForeignKey(name="ORDER_DETAIL_PROD_FK"))
     private Product product;
-    private int quanity;
+    private int quantity;
     private double price;
     private double amount;
 
@@ -46,12 +46,12 @@ public class OrderDetail {
         this.product = product;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {

@@ -17,25 +17,27 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.ROLE_USER;
-
-    public User(String username, String password, String email, Role role, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
-    }
-
+    private String address;
+    private String phone;
     private boolean accountNonExpired = true;
     private boolean accountNonLocked= true;
     private boolean credentialsNonExpired = true;
     private boolean enabled = true;
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ROLE_USER;
 
+    public User(String username, String password, String email, String address, String phone, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
+        this.role = role;
+    }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
@@ -119,6 +121,21 @@ public class User implements UserDetails {
         return enabled;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     @Override
     public String toString() {

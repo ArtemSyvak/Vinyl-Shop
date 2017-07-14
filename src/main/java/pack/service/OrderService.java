@@ -11,7 +11,7 @@ public interface OrderService {
     int getMaxOrderNum();
 
     void saveOrder(CartInfo cartInfo);
-    OrderInfo getOrderInfo(String orderId);
+    OrderInfo getOrderInfo(int orderId);
     List<OrderDetailInfo> listOrderDetailInfos(int orderId);
 
 }

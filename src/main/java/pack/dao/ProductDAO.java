@@ -9,8 +9,4 @@ import java.util.List;
 
 public interface ProductDAO extends JpaRepository<Product, Integer> {
 
-
-    @Query("from Product p where p.code =:code")
-    Product findByCode(int code);
-
 }
