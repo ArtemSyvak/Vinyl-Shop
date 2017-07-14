@@ -3,11 +3,11 @@ package pack.model;
 public class CartLineInfo {
 
     private ProductInfo productInfo;
-    private int quanity;
+    private int quantity;
 
 
     public CartLineInfo() {
-        this.quanity = 0;
+        this.quantity = 0;
     }
 
     public ProductInfo getProductInfo() {
@@ -18,15 +18,15 @@ public class CartLineInfo {
         this.productInfo = productInfo;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     public double getAmount(){
-        return this.productInfo.getPrice() * this.quanity;
+        return this.productInfo.getPrice() * this.quantity;
     }
 
 }

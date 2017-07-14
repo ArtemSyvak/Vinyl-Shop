@@ -8,12 +8,12 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ORDER_ID", foreignKey = @ForeignKey(name="ORDER_DETAIL_ORD_FK"))
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name="ORDER_ID", foreignKey = @ForeignKey(name="ORDER_DETAIL_ORD_FK"))
     private Order order;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="PRODUCT_ID", foreignKey = @ForeignKey(name="ORDER_DETAIL_PROD_FK"))
+//
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name="PRODUCT_ID", foreignKey = @ForeignKey(name="ORDER_DETAIL_PROD_FK"))
     private Product product;
     private int quantity;
     private double price;

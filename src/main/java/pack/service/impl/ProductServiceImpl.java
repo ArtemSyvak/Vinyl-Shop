@@ -23,13 +23,13 @@ public class ProductServiceImpl implements ProductService {
 
     public void save(ProductInfo productInfo) {
         Product product = new Product();
-        product.setCode(productInfo.getCode());
+        product.setId(productInfo.getProductId());
+        product.setProductName(productInfo.getProductName());
         product.setArtist(productInfo.getArtist());
         product.setGenre(productInfo.getGenre());
         product.setDescription(productInfo.getDescription());
-        product.setImage(productInfo.getPathImage());
+        product.setImage(productInfo.getImage());
         product.setPrice(productInfo.getPrice());
-        product.setProductName(productInfo.getProductName());
         product.setReleaseYear(productInfo.getReleaseYear());
         productDAO.save(product);
     }

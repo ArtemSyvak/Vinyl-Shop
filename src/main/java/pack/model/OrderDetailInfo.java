@@ -3,13 +3,22 @@ package pack.model;
 public class OrderDetailInfo {
 
     public int id;
-    private int productCode; //product id
+    private int productId; //product id
     private String productName;
     private int quantity;
     private double price;
     private double amount;
 
     public OrderDetailInfo() {
+    }
+
+    public OrderDetailInfo(int id, int productId, String productName, int quantity, double price, double amount) {
+        this.id = id;
+        this.productId = productId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+        this.amount = amount;
     }
 
     public int getId() {
@@ -20,12 +29,12 @@ public class OrderDetailInfo {
         this.id = id;
     }
 
-    public int getProductCode() {
-        return productCode;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProductCode(int productCode) {
-        this.productCode = productCode;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {

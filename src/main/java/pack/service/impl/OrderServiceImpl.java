@@ -31,16 +31,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ProductDAO productDAO;
 
-    public int getMaxOrderNum() {
-        return orderDAO.getMaxIntNum();
-    }
-
     public void saveOrder(CartInfo cartInfo) {
-        int orderNum = this.getMaxOrderNum() + 1;
         Order order = new Order();
-
-        order.setId(cartInfo.getOrderNum());
-        order.setOrderNum(orderNum);
         order.setOrderDate(new Date());
         order.setAmount(cartInfo.getAmountTotal());
 
@@ -55,20 +47,19 @@ public class OrderServiceImpl implements OrderService {
         List<CartLineInfo> lines = cartInfo.getCartLines();
         for(CartLineInfo line : lines){
             OrderDetail detail = new OrderDetail();
-            detail.setId(line.getProductInfo().getCode());
             detail.setOrder(order);
             detail.setAmount(line.getAmount());
             detail.setPrice(line.getProductInfo().getPrice());
-            detail.setQuantity(line.getQuanity());
+            detail.setQuantity(line.getQuantity());
 
-            int code = line.getProductInfo().getCode();
-            Product product = this.productDAO.findOne(code);
+            int productId = line.getProductInfo().getProductId();
+            Product product = this.productDAO.findOne(productId);
             detail.setProduct(product);
 
             orderDetailDAO.save(detail);
 
         }
-        cartInfo.setOrderNum(orderNum);
+        cartInfo.setOrderId(order.getId());
     }
 
     public Order findOrder(int orderId){
@@ -81,26 +72,26 @@ public class OrderServiceImpl implements OrderService {
         if(order == null){
             return null;
         }
-            return new OrderInfo(order.getId(), order.getOrderDate(), order.getOrderNum(),order.getAmount(),
+            return new OrderInfo(order.getId(), order.getOrderDate(), order.getAmount(),
                     order.getCustomerName(),order.getCustomerAddress(), order.getCustomerEmail(),
                     order.getCustomerPhone());
     }
 
     public List<OrderDetailInfo> listOrderDetailInfos(int orderId) {
+            List<OrderDetail> listOrderDetail = orderDetailDAO.getListOrderDetail(orderId);
+            List<OrderDetailInfo> listInfos = new ArrayList<OrderDetailInfo>();
 
-        List<OrderDetailInfo> infoList = new ArrayList<OrderDetailInfo>();
-        OrderDetail orderDetail = orderDetailDAO.findOne(orderId);
-
-        for (OrderDetailInfo of: infoList) {
-            of.setId(orderDetail.getId());
-            of.setAmount(orderDetail.getAmount());
-            of.setPrice(orderDetail.getPrice());
-            of.setProductCode(orderDetail.getProduct().getCode());
-            of.setProductName(orderDetail.getProduct().getProductName());
-            of.setQuantity(orderDetail.getQuantity());
-            infoList.add(of);
-        }
-        return infoList;
+            for(OrderDetail detail : listOrderDetail){
+                OrderDetailInfo orderDetailInfo = new OrderDetailInfo();
+                orderDetailInfo.setId(detail.getId());
+                orderDetailInfo.setProductId(detail.getProduct().getId());
+                orderDetailInfo.setProductName(detail.getProduct().getProductName());
+                orderDetailInfo.setQuantity(detail.getQuantity());
+                orderDetailInfo.setPrice(detail.getPrice());
+                orderDetailInfo.setAmount(detail.getAmount());
+                listInfos.add(orderDetailInfo);
+            }
+        return listInfos;
     }
 
 }
