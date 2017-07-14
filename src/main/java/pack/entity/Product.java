@@ -1,7 +1,6 @@
 package pack.entity;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 public class Product {

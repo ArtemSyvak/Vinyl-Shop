@@ -61,6 +61,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.5" />
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
         </element>
       </element>
       <element id="directory" name="META-INF">

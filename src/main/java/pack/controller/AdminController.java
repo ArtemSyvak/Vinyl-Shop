@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import pack.entity.Order;
 import pack.entity.Product;
-import pack.service.ProductService;
-//import pack.service.editors.OrderEditor;
+import pack.validator.UserValidator;
+//import pack.service.ProductService;
 
 /**
  * Created by Artem on 12.07.2017.
@@ -17,12 +16,13 @@ import pack.service.ProductService;
 @RequestMapping("/admin/")
 public class AdminController {
 
+//
+//    @Autowired
+//    ProductService productService;
 
     @Autowired
-    ProductService productService;
+    UserValidator validator;
 
-//    @Autowired
-//    OrderEditor orderEditor;
 
     @GetMapping("/")
     public String adminIndex(){
@@ -36,15 +36,9 @@ public class AdminController {
     }
 
 
-//    @PostMapping("saveProduct")
-//    public String saveProduct(@ModelAttribute("product")Product product){
-//        productService.save(product);
-//        return "redirect:/";
-//    }
-//
-//    @InitBinder("product")
-//    public void binder(WebDataBinder webDataBinder) {
-//        webDataBinder.registerCustomEditor(Order.class, orderEditor);
-//    }
+    @InitBinder
+    public void binder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(validator);
+    }
 
 }

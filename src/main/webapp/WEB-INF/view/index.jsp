@@ -1,17 +1,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Администратор
-  Date: 25.01.2017
-  Time: 19:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@include file="tempates/header.jsp"%>
+
 <h2>Регистрация</h2>
     <form action="save" method="post">
         <input type="text" name="username">
@@ -24,6 +14,7 @@
     <a href="toLogin">Log in</a>
         <br>
 
+
 <form action="/logout" method="post">
     <input type="submit" value="Log out">
     <input type="hidden"
@@ -35,6 +26,4 @@
 </security:authorize>
 
 
-
-</body>
-</html>
+<%@include file="tempates/footer.jsp"%>
