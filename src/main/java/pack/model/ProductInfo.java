@@ -5,53 +5,48 @@ import pack.entity.Product;
 public class ProductInfo {
 
     private int productId;
-    private double price;
     private String productName;
     private String artist;
+    private int releaseYear;
     private String genre;
     private String description;
-    private int releaseYear;
+    private String image; //pathToImage
+    private double price;
 
-    private Boolean newProduct = false;
-
-    private String pathImage;
-
-    public String getPathImage() {
-        return pathImage;
-    }
-
-    public void setPathImage(String pathImage) {
-        this.pathImage = pathImage;
-    }
 
     public ProductInfo() {
 
     }
 
-    public ProductInfo(Product product){
-        this.productId = product.getCode();
+    public ProductInfo(Product product) {
+        this.productId = product.getId();
         this.productName = product.getProductName();
-        this.price = product.getPrice();
         this.artist = product.getArtist();
+        this.releaseYear = product.getReleaseYear();
         this.genre = product.getGenre();
         this.description = product.getDescription();
-        this.releaseYear = product.getReleaseYear();
+        this.image = product.getImage();
+        this.price = product.getPrice();
     }
 
-    public int getCode() {
+
+    public ProductInfo(int productId, String productName, String artist, int releaseYear, String genre, String description, String image, double price) {
+        this.productId = productId;
+        this.productName = productName;
+        this.artist = artist;
+        this.releaseYear = releaseYear;
+        this.genre = genre;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+    }
+
+    public int getProductId() {
         return productId;
     }
 
-    public void setCode(int code) {
-        this.productId = code;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -70,6 +65,14 @@ public class ProductInfo {
         this.artist = artist;
     }
 
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
     public String getGenre() {
         return genre;
     }
@@ -86,21 +89,19 @@ public class ProductInfo {
         this.description = description;
     }
 
-    public int getReleaseYear() {
-        return releaseYear;
+    public String getImage() {
+        return image;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public Boolean getNewProduct() {
-        return newProduct;
+    public double getPrice() {
+        return price;
     }
 
-    public void setNewProduct(Boolean newProduct) {
-        this.newProduct = newProduct;
+    public void setPrice(double price) {
+        this.price = price;
     }
-
-
 }

@@ -2,14 +2,14 @@ package pack.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-@Entity
-public class Order {
 
+@Entity
+@Table(name="\"Order\"")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date orderDate;
-    private int orderNum;
     private double amount;
 
     private String customerName;
@@ -18,6 +18,15 @@ public class Order {
     private String customerPhone;
 
     public Order() {
+    }
+
+    public Order(Date orderDate, double amount, String customerName, String customerAddress, String customerEmail, String customerPhone) {
+        this.orderDate = orderDate;
+        this.amount = amount;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
     }
 
     public int getId() {
@@ -34,14 +43,6 @@ public class Order {
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
-    }
-
-    public int getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
     }
 
     public double getAmount() {
@@ -82,5 +83,19 @@ public class Order {
 
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", orderDate=" + orderDate +
+                ", amount=" + amount +
+                ", customerName='" + customerName + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                '}';
     }
 }

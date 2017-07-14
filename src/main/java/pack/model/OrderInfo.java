@@ -9,7 +9,6 @@ public class OrderInfo {
     //Info from Order
     private int orderId;
     private Date orderDate;
-    private int orderNum;
     private double amount;
 
     //Info from User
@@ -24,12 +23,11 @@ public class OrderInfo {
     public OrderInfo() {
     }
 
-    public OrderInfo(int id, Date orderDate, int orderNum, double amount,
+    public OrderInfo(int id, Date orderDate, double amount,
                      String customerName, String customerAddress,
                      String customerEmail, String customerPhone) {
         this.orderId = id;
         this.orderDate = orderDate;
-        this.orderNum = orderNum;
         this.amount = amount;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
@@ -51,14 +49,6 @@ public class OrderInfo {
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
-    }
-
-    public int getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
     }
 
     public double getAmount() {

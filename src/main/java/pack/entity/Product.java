@@ -10,19 +10,26 @@ public class Product {
     private int id;
     private String productName;
     private String artist;
+    private int releaseYear;
     private String genre;
     private String description;
     private String image; //pathToImage
+    private double price;
 
-    public Product(String productName, String artist, String genre, String description, String image, int releaseYear, double price) {
+    public Product() {
+
+    }
+
+    public Product(String productName, String artist, int releaseYear, String genre, String description, String image, double price) {
         this.productName = productName;
         this.artist = artist;
+        this.releaseYear = releaseYear;
         this.genre = genre;
         this.description = description;
         this.image = image;
-        this.releaseYear = releaseYear;
         this.price = price;
     }
+
 
     public String getImage() {
         return image;
@@ -30,22 +37,6 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    private int releaseYear;
-
-    private double price;
-
-    public Product() {
-
-    }
-
-    public int getCode() {
-        return id;
-    }
-
-    public void setCode(int code) {
-        this.id = code;
     }
 
 
@@ -89,7 +80,13 @@ public class Product {
         this.releaseYear = releaseYear;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getPrice() {
         return price;
@@ -99,16 +96,17 @@ public class Product {
         this.price = price;
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", productName='" + productName + '\'' +
                 ", artist='" + artist + '\'' +
+                ", releaseYear=" + releaseYear +
                 ", genre='" + genre + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
-                ", releaseYear=" + releaseYear +
                 ", price=" + price +
                 '}';
     }

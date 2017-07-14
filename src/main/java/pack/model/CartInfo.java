@@ -5,19 +5,19 @@ import java.util.List;
 
 public class CartInfo {
 
-    private int orderNum;
+    private int orderId;
     private UserInfo userInfo;
     private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
 
     public CartInfo() {
     }
 
-    public int getOrderNum() {
-        return orderNum;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public UserInfo getUserInfo() {
@@ -28,29 +28,29 @@ public class CartInfo {
         this.userInfo = userInfo;
     }
 
-    private CartLineInfo findLineByCode(int productId){
+    private CartLineInfo findLineById(int productId){
         for(CartLineInfo line : this.cartLines){
-            int id = line.getProductInfo().getCode();
+            int id = line.getProductInfo().getProductId();
             if(id==productId)return line;
         }
         return null;
     }
 
-    public void addProduct(ProductInfo productInfo, int quality) {
+    public void addProduct(ProductInfo productInfo, int quantity) {
 
-        CartLineInfo line = this.findLineByCode(productInfo.getCode());
+        CartLineInfo line = this.findLineById(productInfo.getProductId());
 
         if (line == null) {
             line = new CartLineInfo();
-            line.setQuanity(0);
+            line.setQuantity(0);
             line.setProductInfo(productInfo);
             this.cartLines.add(line);
         }
-        int newQuanity = line.getQuanity() + quality;
-        if (newQuanity <= 0) {
+        int newQuantity = line.getQuantity() + quantity;
+        if (newQuantity <= 0) {
             this.cartLines.remove(line);
         } else {
-            line.setQuanity(newQuanity);
+            line.setQuantity(newQuantity);
         }
     }
 
@@ -58,21 +58,21 @@ public class CartInfo {
 
     }
 
-    public void updateProduct(int code, int quanity){
+    public void updateProduct(int productId, int quantity){
 
-        CartLineInfo line = this.findLineByCode(code);
+        CartLineInfo line = this.findLineById(productId);
 
         if(line!=null){
-            if(quanity<=0){
+            if(quantity<=0){
                 this.cartLines.remove(line);
             }else{
-                line.setQuanity(quanity);
+                line.setQuantity(quantity);
             }
         }
     }
 
     public void removeProduct(ProductInfo productInfo){
-        CartLineInfo line = this.findLineByCode(productInfo.getCode());
+        CartLineInfo line = this.findLineById(productInfo.getProductId());
         if(line != null){
             if(this.cartLines.remove(line));
         }
@@ -89,7 +89,7 @@ public class CartInfo {
     public int getQuantityTotal(){
         int quantity = 0;
         for (CartLineInfo line : this.cartLines){
-            quantity += line.getQuanity();
+            quantity += line.getQuantity();
         }
         return quantity;
     }
@@ -106,7 +106,7 @@ public class CartInfo {
         if(cartForm!=null){
             List<CartLineInfo> lines = cartForm.getCartLines();
             for(CartLineInfo line : lines){
-                this.updateProduct(line.getProductInfo().getCode(), line.getQuanity());
+                this.updateProduct(line.getProductInfo().getProductId(), line.getQuantity());
             }
 
         }
