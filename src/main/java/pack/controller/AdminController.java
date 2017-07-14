@@ -20,8 +20,6 @@ public class AdminController {
 //    @Autowired
 //    ProductService productService;
 
-    @Autowired
-    UserValidator validator;
 
 
     @GetMapping("/")
@@ -36,9 +34,5 @@ public class AdminController {
     }
 
 
-    @InitBinder
-    public void binder(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(validator);
-    }
 
 }

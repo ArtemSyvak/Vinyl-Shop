@@ -3,23 +3,29 @@ package pack.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import pack.entity.User;
 import pack.service.UserService;
+import pack.validator.UserValidator;
+
+import javax.validation.Valid;
 
 @Controller
 public class MainController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserValidator validator;
+
+
     @RequestMapping("/")
-    public String toIndex(){
+    public String toIndex(Model model){
+        model.addAttribute("nullUser" ,new User());
         return "index";
     }
-
     @GetMapping("toLogin")
     public String toLogin(){
         return "login";
@@ -31,13 +37,17 @@ public class MainController {
     }
 
     @PostMapping("save")
-    public String save(@RequestParam("username") String username,
-                       @RequestParam("password") String password){
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+    public String save(@ModelAttribute("nullUser") @Valid User user,
+                       BindingResult result){
+        if (result.hasErrors()){
+            return "index";
+        }
         userService.save(user);
         return "index";
     }
 
+    @InitBinder
+    public void binder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(validator);
+    }
 }

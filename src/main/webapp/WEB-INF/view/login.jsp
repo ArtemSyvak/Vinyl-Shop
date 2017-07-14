@@ -7,18 +7,18 @@
 </head>
 <body>
 
-    <%--<form action="/login" method="post">--%>
-        <%--<input type="text" name="username">--%>
-        <%--<input type="password" name="password">--%>
-        <%--<input type="submit">--%>
-        <%--<input type="hidden"--%>
-               <%--name="${_csrf.parameterName}"--%>
-               <%--value="${_csrf.token}"/>--%>
-    <%--</form>--%>
+    <form action="/login" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="submit">
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
 
-    <sf:form action="/login" method="post" modelAttribute="">
+    <%--<sf:form action="/login" method="post" modelAttribute="">--%>
 
-    </sf:form>
+    <%--</sf:form>--%>
 
 </body>
 </html>
