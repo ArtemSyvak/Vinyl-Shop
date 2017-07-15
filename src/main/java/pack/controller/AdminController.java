@@ -3,11 +3,9 @@ package pack.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import pack.entity.Product;
-import pack.validator.UserValidator;
-//import pack.service.ProductService;
+import pack.model.ProductInfo;
+import pack.service.ProductService;
 
 /**
  * Created by Artem on 12.07.2017.
@@ -16,11 +14,9 @@ import pack.validator.UserValidator;
 @RequestMapping("/admin/")
 public class AdminController {
 
-//
-//    @Autowired
-//    ProductService productService;
 
-
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/")
     public String adminIndex(){
@@ -29,10 +25,14 @@ public class AdminController {
 
     @RequestMapping("admin_page")
     public String adminPage(Model model){
-        model.addAttribute("product", new Product());
+        model.addAttribute("nullProduct", new ProductInfo());
         return "adminPage";
     }
 
-
+    @PostMapping("saveProduct")
+    public String saveProduct( @ModelAttribute("nullProduct") ProductInfo productInfo){
+        productService.save(productInfo);
+        return "redirect:/";
+    }
 
 }

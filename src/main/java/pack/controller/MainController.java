@@ -26,15 +26,7 @@ public class MainController {
         model.addAttribute("nullUser" ,new User());
         return "index";
     }
-    @GetMapping("toLogin")
-    public String toLogin(){
-        return "login";
-    }
 
-    @GetMapping("logout_page")
-    public String toLogout(){
-        return "logout_page";
-    }
 
     @PostMapping("save")
     public String save(@ModelAttribute("nullUser") @Valid User user,
