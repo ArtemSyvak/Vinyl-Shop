@@ -1,6 +1,8 @@
 package pack.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pack.dao.ProductDAO;
@@ -31,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
         product.setImage(productInfo.getImage());
         product.setPrice(productInfo.getPrice());
         product.setReleaseYear(productInfo.getReleaseYear());
+        product.setInStock(productInfo.isInStock());
         productDAO.save(product);
     }
 
@@ -40,5 +43,9 @@ public class ProductServiceImpl implements ProductService {
 
     public void delete(int id) {
         productDAO.delete(id);
+    }
+
+    public Page<Product> listAllByPage(Pageable pageable) {
+        return productDAO.findAll(pageable);
     }
 }

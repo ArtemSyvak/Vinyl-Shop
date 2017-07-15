@@ -14,6 +14,15 @@ public class Product {
     private String description;
     private String image; //pathToImage
     private double price;
+    private boolean inStock;
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
+    }
 
     public Product() {
 
@@ -27,6 +36,7 @@ public class Product {
         this.description = description;
         this.image = image;
         this.price = price;
+        this.inStock = true;
     }
 
 
@@ -107,6 +117,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", price=" + price +
+                ", inStock=" + inStock +
                 '}';
     }
 }

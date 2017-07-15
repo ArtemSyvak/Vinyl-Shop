@@ -12,6 +12,7 @@ public class ProductInfo {
     private String description;
     private String image; //pathToImage
     private double price;
+    private boolean inStock;
 
 
     public ProductInfo() {
@@ -27,10 +28,10 @@ public class ProductInfo {
         this.description = product.getDescription();
         this.image = product.getImage();
         this.price = product.getPrice();
+        this.inStock = product.isInStock();
     }
 
-
-    public ProductInfo(int productId, String productName, String artist, int releaseYear, String genre, String description, String image, double price) {
+    public ProductInfo(int productId, String productName, String artist, int releaseYear, String genre, String description, String image, double price, boolean inStock) {
         this.productId = productId;
         this.productName = productName;
         this.artist = artist;
@@ -39,6 +40,8 @@ public class ProductInfo {
         this.description = description;
         this.image = image;
         this.price = price;
+        this.inStock = true;
+
     }
 
     public int getProductId() {
@@ -103,5 +106,14 @@ public class ProductInfo {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
     }
 }
