@@ -1,5 +1,7 @@
 package pack.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import pack.entity.Product;
 import pack.model.ProductInfo;
 
@@ -13,4 +15,6 @@ public interface ProductService {
     void save(ProductInfo productInfo);
 
     void delete(int id);
+
+    Page<Product> listAllByPage(Pageable pageable);
 }

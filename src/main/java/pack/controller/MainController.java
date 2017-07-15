@@ -28,6 +28,7 @@ public class MainController {
     }
 
 
+
     @PostMapping("save")
     public String save(@ModelAttribute("nullUser") @Valid User user,
                        BindingResult result){

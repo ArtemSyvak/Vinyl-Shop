@@ -1,10 +1,4 @@
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@include file="tempates/header.jsp"%>
 
 <sf:form action="saveProduct" modelAttribute="nullProduct" method="post">
     Album
@@ -13,11 +7,11 @@
     <br>
     Artist
     <br>
-    <sf:input path="genre"></sf:input>
+    <sf:input path="artist"></sf:input>
     <br>
     Genre
     <br>
-    <sf:input path="artist"></sf:input>
+    <sf:input path="genre"></sf:input>
     <br>
     Year
     <br>

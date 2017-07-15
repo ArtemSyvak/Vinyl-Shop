@@ -31,8 +31,9 @@ public class AdminController {
 
     @PostMapping("saveProduct")
     public String saveProduct( @ModelAttribute("nullProduct") ProductInfo productInfo){
+        productInfo.setInStock(true);
         productService.save(productInfo);
-        return "redirect:/";
+        return "adminPage";
     }
 
 }
