@@ -1,3 +1,13 @@
 body{
-    background-color: cadetblue;
+    background-color: #F0F4C1;
+}
+
+.divProduct{
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    margin: 15px;
+    background-color: #BEF7E4;
+    color: black;
+    border: solid 1px #032030;
 }

@@ -29,6 +29,18 @@ public class AdminController {
         return "adminPage";
     }
 
+    @GetMapping("admin/admin_page")
+    public String backtothefurure(){
+        return "redirect:/admin/admin_page";
+    }
+
+    @GetMapping("products")
+    public String backtothepast(){
+        return "redirect:/products";
+    }
+
+
+
     @PostMapping("saveProduct")
     public String saveProduct( @ModelAttribute("nullProduct") ProductInfo productInfo){
         productInfo.setInStock(true);

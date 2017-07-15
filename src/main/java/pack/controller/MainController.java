@@ -20,13 +20,17 @@ public class MainController {
     @Autowired
     UserValidator validator;
 
-
     @RequestMapping("/")
     public String toIndex(Model model){
-        model.addAttribute("nullUser" ,new User());
+        model.addAttribute("nullUser" , new User());
         return "index";
     }
-
+//
+//    @RequestMapping("addNull")
+//    public String signUp(Model model){
+//        model.addAttribute("nullUser" ,new User());
+//        return "index";
+//    }
 
 
     @PostMapping("save")
