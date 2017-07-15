@@ -20,7 +20,7 @@
 <body>
 
 <%--TOP-MENU--%>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" >
     <div class="container">
         <div class="navbar-header">
             <a href="#" class="navbar-brand">Vinyl Shop</a>
@@ -34,6 +34,7 @@
                 <security:authorize  access="hasRole('ROLE_ADMIN')">
                     <li><a href="admin/admin_page">Add Product </a></li>
                 </security:authorize>
+
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                         <i></i>
@@ -41,59 +42,88 @@
                     </div>
                     <button type="submit"class="btn btn-default">Submit</button>
                 </form>
+                <%--SIGN_UP--%>
                 <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Sign Up <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <sf:form action="save" method="post" modelAttribute="nullUser">
-                                Email
-                                <br>
-                                <sf:input path="email"></sf:input>
-                                <sf:errors path="email"></sf:errors>
-                                <br>
-                                Username
-                                <br>
-                                <sf:input path="username"></sf:input>
-                                <sf:errors path="username"></sf:errors>
-                                <br>
-                                Password
-                                <br>
-                                <sf:password path="password"></sf:password>
-                                <sf:errors path="password"></sf:errors>
-                                <br>
-                                <input type="submit" value="Registry">
-                                <input type="hidden"
-                                       name="${_csrf.parameterName}"
-                                       value="${_csrf.token}"/>
-                            </sf:form>
-                        </ul>
-                    </li>
+                <li>
+                    <a href="#registryModal" data-toggle="modal">Sign Up</a>
+                    <div class="modal fade" id="registryModal" tabindex="-1">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal">x</button>
+                                    <h4 class="modal-title" align="center">Registration</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <sf:form action="save" method="post" modelAttribute="nullUser">
+                                        Email
+                                        <br>
+                                        <sf:input path="email"></sf:input>
+                                        <sf:errors path="email"></sf:errors>
+                                        <br>
+                                        Username
+                                        <br>
+                                        <sf:input path="username"></sf:input>
+                                        <sf:errors path="username"></sf:errors>
+                                        <br>
+                                        Password
+                                        <br>
+                                        <sf:password path="password"></sf:password>
+                                        <sf:errors path="password"></sf:errors>
+                                        <br>
+                                        <input type="submit" value="Registry">
+                                        <input type="hidden"
+                                               name="${_csrf.parameterName}"
+                                               value="${_csrf.token}"/>
+                                    </sf:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 </security:authorize>
-
+                <%--SIGN_UP--%>
+                <%--SIGN_IN--%>
                 <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-                    <li class="dropdown">
-                        <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In</a>
-                        <ul class="dropdown-menu">
-                            <form action="/login" method="post">
-                                <input type="text" placeholder="username" name="username">
-                                <input type="password" placeholder="password" name="password">
-                                <input type="submit" value="Sign In">
-                                <input type="hidden"
-                                       name="${_csrf.parameterName}"
-                                       value="${_csrf.token}"/>
-                            </form>
-                        </ul>
-                    </li>
+                <li>
+                    <a href="#loginModal" data-toggle="modal">Sign In</a>
+                    <div class="modal fade" id="loginModal" tabindex="-1">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal">x</button>
+                                    <h4 class="modal-title" align="center">Sign In</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/login" method="post">
+                                        Username
+                                        <br>
+                                        <input type="text" name="username">
+                                        <br>
+                                        Password
+                                        <br>
+                                        <input type="password" name="password">
+                                        <br>
+                                        <input type="submit" value="Sign In">
+                                        <input type="hidden"
+                                               name="${_csrf.parameterName}"
+                                               value="${_csrf.token}"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 </security:authorize>
-
+                <%--SIGN_IN--%>
+                <%--LOGOUT--%>
                 <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
                     <li>
                         <a href="/logout">Log Out</a>
                     </li>
                 </security:authorize>
+                <%--LOGOUT--%>
             </ul>
         </div>
-    </div>
+     </div>
 </nav>
 <%--/TOP-MENU--%>
