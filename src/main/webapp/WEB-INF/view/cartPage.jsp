@@ -4,8 +4,7 @@
 
 <h2>My shopping cart</h2>
 
-    <c:forEach items="${cartForm.cartLines}" var="cartLineInfo"
-               varStatus="varStatus">
+    <c:forEach items="${cartForm.cartLines}" var="cartLineInfo" varStatus="varStatus" step="3">
         <div class="container">
         <div class="row">
         <div class="col-md-4">
