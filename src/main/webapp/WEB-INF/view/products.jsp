@@ -54,7 +54,7 @@
 </c:forEach>
 
 <div align="center"><h3>Viewing page ${page.number + 1} of ${page.totalPages}</h3></div>
-<div>
+<div class="pageCounter">
     <h3 align="center"><c:forEach var="i" begin="1" end="${page.totalPages}">
         <c:choose>
             <c:when test="${i == page.number + 1}">${i}</c:when>

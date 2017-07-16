@@ -20,7 +20,7 @@
 <body>
 
 <%--TOP-MENU--%>
-<nav class="navbar navbar-default" >
+<nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
             <a href="#" class="navbar-brand">Vinyl Shop</a>

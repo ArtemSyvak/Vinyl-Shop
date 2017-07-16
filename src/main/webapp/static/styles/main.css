@@ -2,6 +2,18 @@ body{
     background-color: #D0DFE6;
 }
 
+a{
+    color: #AEB8C3!important;
+    transition: 0.3s;
+}
+a:hover, a:active{
+    color: #0B9BA9!important;
+    transition: 0.3s;
+}
+.pageCounter{
+    background-color: #B50B1E;
+}
+
 .divProduct{
     width: 250px;
     height: 250px;
@@ -12,7 +24,14 @@ body{
     border: solid 1px #2E7866;
 }
 
- .rowMenu{
+.navbar-inverse{
     background-color: #263149;
-    color: #0B9BA9;
+}
+
+.navbar-brand {
+     font-size: 40px;
+ }
+
+ ul.nav{
+    font-size: 18px;
 }
