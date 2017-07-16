@@ -6,16 +6,25 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import pack.entity.Product;
 import pack.entity.User;
+import pack.model.CartInfo;
+import pack.model.ProductInfo;
+import pack.service.ProductService;
 import pack.service.UserService;
+import pack.service.impl.Utils;
 import pack.validator.UserValidator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 public class MainController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    ProductService productService;
 
     @Autowired
     UserValidator validator;
@@ -43,7 +52,14 @@ public class MainController {
         return "index";
     }
 
-    @InitBinder
+    @GetMapping("details-{id}")
+    public String toDetailsPage(@PathVariable("id") int id, Model model){
+        Product product = productService.findOne(id);
+        model.addAttribute("product",product);
+        return "details";
+    }
+
+    @InitBinder("user")
     public void binder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(validator);
     }

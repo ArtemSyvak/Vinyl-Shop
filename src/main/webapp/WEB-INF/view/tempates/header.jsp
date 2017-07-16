@@ -1,7 +1,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
 <html>
 <head>
@@ -42,6 +42,11 @@
                     </div>
                     <button type="submit"class="btn btn-default">Submit</button>
                 </form>
+                <%--Cart--%>
+                <security:authorize  access="hasRole('ROLE_USER')">
+                    <li><a href="myCart">My Cart </a></li>
+                </security:authorize>
+                <%--Cart--%>
                 <%--SIGN_UP--%>
                 <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
                 <li>
@@ -82,16 +87,16 @@
                 </li>
                 </security:authorize>
                 <%--SIGN_UP--%>
-                <%--SIGN_IN--%>
+                <%--LOG_IN--%>
                 <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                 <li>
-                    <a href="#loginModal" data-toggle="modal">Sign In</a>
+                    <a href="#loginModal" data-toggle="modal">Log In</a>
                     <div class="modal fade" id="loginModal" tabindex="-1">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button class="close" data-dismiss="modal">x</button>
-                                    <h4 class="modal-title" align="center">Sign In</h4>
+                                    <h4 class="modal-title" align="center">Log In</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form action="/login" method="post">

@@ -10,7 +10,7 @@ public interface ProductService {
 
     Product findOne(int code);
 
-    ProductInfo findProductInfo(int code);
+    ProductInfo findProductInfo(int id);
 
     void save(ProductInfo productInfo);
 

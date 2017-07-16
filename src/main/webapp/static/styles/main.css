@@ -19,7 +19,17 @@ a:hover, a:active{
     height: 250px;
     padding: 20px;
     margin: 15px;
-    background-color: #526187;
+    background-color: floralwhite;
+    color: #0D1130;
+    border: solid 1px #2E7866;
+}
+
+.divProductDetails{
+    width: 700px;
+    height: 400px;
+    padding: 20px;
+    margin: 15px;
+    background-color: floralwhite;
     color: #0D1130;
     border: solid 1px #2E7866;
 }

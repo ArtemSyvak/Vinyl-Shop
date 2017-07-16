@@ -28,7 +28,7 @@ public class DataConfig {
 
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/shop");
+        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf-8");
         hikariConfig.setUsername("root");
         hikariConfig.setPassword("root");
 

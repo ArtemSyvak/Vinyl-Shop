@@ -11,8 +11,10 @@
                 <b>Album:</b> <td>${product.productName}</td><br>
                 <b>Genre:</b> <td>${product.genre}</td><br>
                 <b>Release year:</b> <td>${product.releaseYear}</td><br>
-                <b>Description:</b> <td>${product.description}</td><br>
                 <b>Price:</b> <td>${product.price}</td>
+                    <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                        Buy Now</a>
+                    <a href="details-${product.id}">See details</a>
                 </div>
             </div>
             <c:choose>
@@ -26,8 +28,10 @@
                             <b>Album:</b> <td>${page.content[count.index+1].productName}</td><br>
                             <b>Genre:</b> <td>${page.content[count.index+1].genre}</td><br>
                             <b>Release year:</b> <td>${page.content[count.index+1].releaseYear}</td><br>
-                            <b>Description:</b> <td>${page.content[count.index+1].description}</td><br>
                             <b>Price:</b> <td>${page.content[count.index+1].price}</td>
+                            <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+1].id}">
+                                Buy Now</a>
+                            <a href="details-${page.content[count.index+1].id}">See details</a>
                         </div>
                     </div>
                 </c:otherwise>
@@ -43,8 +47,10 @@
                             <b>Album:</b> <td>${page.content[count.index+2].productName}</td><br>
                             <b>Genre:</b> <td>${page.content[count.index+2].genre}</td><br>
                             <b>Release year:</b> <td>${page.content[count.index+2].releaseYear}</td><br>
-                            <b>Description:</b> <td>${page.content[count.index+2].description}</td><br>
                             <b>Price:</b> <td>${page.content[count.index+2].price}</td>
+                            <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+2].id}">
+                                Buy Now</a>
+                            <a href="details-${page.content[count.index+2].id}">See details</a>
                         </div>
                     </div>
                 </c:otherwise>
