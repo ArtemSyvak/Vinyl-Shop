@@ -1,11 +1,14 @@
 package pack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pack.entity.Product;
 import pack.entity.User;
 import pack.model.CartInfo;
@@ -34,6 +37,7 @@ public class MainController {
         model.addAttribute("nullUser" , new User());
         return "index";
     }
+
 //
 //    @RequestMapping("addNull")
 //    public String signUp(Model model){
@@ -51,6 +55,7 @@ public class MainController {
         userService.save(user);
         return "index";
     }
+
 
     @GetMapping("details-{id}")
     public String toDetailsPage(@PathVariable("id") int id, Model model){
