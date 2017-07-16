@@ -1,5 +1,5 @@
 body{
-    background-color: #D0DFE6;
+    background-color: beige;
 }
 
 a{
@@ -44,4 +44,36 @@ a:hover, a:active{
 
  ul.nav{
     font-size: 18px;
+}
+
+.customer-info-container {
+    text-align: left;
+    border: 1px solid black;
+    padding: 0px 5px;
+    width: 500px;
+}
+.page-title  {
+    font-size:120%;
+    text-align: left;
+    margin:10px 0px;
+}
+.total {
+    color: black;
+    font-weight: bold;
+    font-size: 120%;
+}
+.orderDetail{
+    width: 250px;
+    height: 150px;
+    padding: 20px;
+    margin: 15px;
+    background-color: floralwhite;
+    color: #0D1130;
+    border: solid 1px #2E7866;
+}
+.orderInfo {
+    text-align: left;
+    border: 1px solid black;
+    padding: 0px 5px;
+    width: 900px;
 }

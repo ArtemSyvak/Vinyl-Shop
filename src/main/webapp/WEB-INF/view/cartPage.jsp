@@ -59,6 +59,22 @@
 
     </c:forEach>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            Total quantity: ${cartForm.quantityTotal}
+            Total cost: ${cartForm.amountTotal}
+        </div>
+    </div>
+    <form method="POST"
+          action="${pageContext.request.contextPath}/toUserForm">
+        <input type="submit" value="Create order"></input>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
 
+
+</div>
 
 <%@include file="tempates/footer.jsp"%>

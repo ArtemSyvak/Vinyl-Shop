@@ -10,6 +10,10 @@ import java.util.List;
 
 public interface OrderDetailDAO extends JpaRepository<OrderDetail, Integer>{
 
+    @Query("from OrderDetail o left join fetch o.order left join fetch o.product where o.order.id = :orderId")
+    List<OrderDetail> orderDetailsByOrderIdWithFetch(@Param("orderId") int orderId);
+
     @Query("select o from OrderDetail o where o.order.id = :orderId")
-    List<OrderDetail> getListOrderDetail(@Param("orderId") int orderId);
+    List<OrderDetail> orderDetailListByOrderId(@Param("orderId") int orderId);
+
 }

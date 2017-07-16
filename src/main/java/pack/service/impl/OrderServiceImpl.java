@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ProductDAO productDAO;
 
-    public void saveOrder(CartInfo cartInfo) {
+    public Order saveOrder(CartInfo cartInfo) {
         Order order = new Order();
         order.setOrderDate(new Date());
         order.setAmount(cartInfo.getAmountTotal());
@@ -60,8 +60,8 @@ public class OrderServiceImpl implements OrderService {
 
         }
         cartInfo.setOrderId(order.getId());
+        return order;
     }
-
     public Order findOrder(int orderId){
          return orderDAO.findOne(orderId);
     }
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public List<OrderDetailInfo> listOrderDetailInfos(int orderId) {
-            List<OrderDetail> listOrderDetail = orderDetailDAO.getListOrderDetail(orderId);
+            List<OrderDetail> listOrderDetail = orderDetailDAO.orderDetailListByOrderId(orderId);
             List<OrderDetailInfo> listInfos = new ArrayList<OrderDetailInfo>();
 
             for(OrderDetail detail : listOrderDetail){
@@ -94,4 +94,12 @@ public class OrderServiceImpl implements OrderService {
         return listInfos;
     }
 
+    public List<Order> findAllByCustomerEmail(String email){
+        List<Order> list = orderDAO.findAllByCustomerEmail(email);
+        return list;
+    }
+
+    public List<OrderDetail> orderDetailsByOrderIdWithFetch(int orderId) {
+        return orderDetailDAO.orderDetailsByOrderIdWithFetch(orderId);
+    }
 }
