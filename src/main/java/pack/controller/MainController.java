@@ -10,6 +10,7 @@ import pack.entity.Product;
 import pack.entity.User;
 import pack.model.CartInfo;
 import pack.model.ProductInfo;
+import pack.service.MailService;
 import pack.service.ProductService;
 import pack.service.UserService;
 import pack.service.impl.Utils;
@@ -20,6 +21,10 @@ import javax.validation.Valid;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    MailService mailService;
+
     @Autowired
     UserService userService;
 
@@ -34,13 +39,6 @@ public class MainController {
         model.addAttribute("nullUser" , new User());
         return "index";
     }
-//
-//    @RequestMapping("addNull")
-//    public String signUp(Model model){
-//        model.addAttribute("nullUser" ,new User());
-//        return "index";
-//    }
-
 
     @PostMapping("save")
     public String save(@ModelAttribute("nullUser") @Valid User user,
@@ -49,6 +47,7 @@ public class MainController {
             return "index";
         }
         userService.save(user);
+        mailService.send(user.getEmail());
         return "index";
     }
 
@@ -58,6 +57,9 @@ public class MainController {
         model.addAttribute("product",product);
         return "details";
     }
+
+
+
 
     @InitBinder("user")
     public void binder(WebDataBinder webDataBinder) {

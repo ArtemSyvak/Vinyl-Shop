@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="/style/main.css">
 </head>
 <body>
-
 <%--TOP-MENU--%>
 <nav class="navbar navbar-inverse" >
     <div class="container">

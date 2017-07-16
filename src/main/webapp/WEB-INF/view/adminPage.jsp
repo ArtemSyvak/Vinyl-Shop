@@ -2,7 +2,7 @@
 
 
 <div align="center">
-            <sf:form action="saveProduct" modelAttribute="nullProduct" method="post">
+            <sf:form action="saveProduct" modelAttribute="nullProduct" method="post" enctype="multipart/form-data">
                 Album
                 <br>
                 <sf:input path="productName"></sf:input>
@@ -27,10 +27,10 @@
                 <br>
                 <sf:input path="price"></sf:input>
                 <br>
-                <%--<br>--%>
-                <%--Image--%>
-                <%--<br>--%>
-                <%--<sf:input path="image"></sf:input>--%>
+                <br>
+                Image
+                <br>
+                <input type="file" name="file">
                 <input type="submit" value="Add">
             </sf:form>
 </div>

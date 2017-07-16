@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pack.model.ProductInfo;
 import pack.service.ProductService;
+
+import java.io.File;
 
 /**
  * Created by Artem on 12.07.2017.
@@ -42,8 +45,11 @@ public class AdminController {
 
 
     @PostMapping("saveProduct")
-    public String saveProduct( @ModelAttribute("nullProduct") ProductInfo productInfo){
+    public String saveProduct(@ModelAttribute("nullProduct") ProductInfo productInfo,
+                              @RequestParam("file")MultipartFile multipartFile){
+
         productInfo.setInStock(true);
+        productInfo.setImage("/image/"+multipartFile.getOriginalFilename());
         productService.save(productInfo);
         return "adminPage";
     }
