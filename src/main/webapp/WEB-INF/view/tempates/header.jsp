@@ -31,7 +31,8 @@
                 <li><a href="#">About Us</a></li>
 
                 <security:authorize  access="hasRole('ROLE_ADMIN')">
-                    <li><a href="admin/admin_page">Add Product </a></li>
+                    <li><a href="admin/admin_page">Add Product</a></li>
+                    <li><a href="admin/admin_orders">Orders</a></li>
                 </security:authorize>
 
                 <form class="navbar-form navbar-left" role="search">

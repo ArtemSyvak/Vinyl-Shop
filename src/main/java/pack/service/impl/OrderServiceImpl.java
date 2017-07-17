@@ -1,5 +1,6 @@
 package pack.service.impl;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -99,7 +100,14 @@ public class OrderServiceImpl implements OrderService {
         return list;
     }
 
+    public List<Order> findAllOrdersByIdDesc(){
+        return orderDAO.findAllByOrderByIdDesc();
+    }
     public List<OrderDetail> orderDetailsByOrderIdWithFetch(int orderId) {
         return orderDetailDAO.orderDetailsByOrderIdWithFetch(orderId);
+    }
+
+    public List<OrderDetail> findAllOrderDetails() {
+        return orderDetailDAO.findOrderDetailsAndFetch();
     }
 }

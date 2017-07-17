@@ -13,4 +13,5 @@ import java.util.List;
 public interface OrderDAO extends JpaRepository<Order,Integer>{
 
     List<Order> findAllByCustomerEmail(String email);
+    List<Order> findAllByOrderByIdDesc();
 }

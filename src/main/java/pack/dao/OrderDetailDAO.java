@@ -16,4 +16,6 @@ public interface OrderDetailDAO extends JpaRepository<OrderDetail, Integer>{
     @Query("select o from OrderDetail o where o.order.id = :orderId")
     List<OrderDetail> orderDetailListByOrderId(@Param("orderId") int orderId);
 
+    @Query("from OrderDetail o left join fetch o.order left join fetch o.product where o.order.id > 1")
+    List<OrderDetail> findOrderDetailsAndFetch();
 }

@@ -5,10 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pack.entity.Order;
+import pack.entity.OrderDetail;
 import pack.model.ProductInfo;
+import pack.service.OrderService;
 import pack.service.ProductService;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by Artem on 12.07.2017.
@@ -20,6 +24,9 @@ public class AdminController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/")
     public String adminIndex(){
@@ -42,7 +49,14 @@ public class AdminController {
         return "redirect:/products";
     }
 
-
+    @RequestMapping("admin_orders")
+    public String toAdminOrders(Model model){
+        List<Order> orderList = orderService.findAllOrdersByIdDesc();
+        List<OrderDetail> orderDetails = orderService.findAllOrderDetails();
+        model.addAttribute("orderDetails",orderDetails);
+        model.addAttribute("orderList",orderList);
+        return "adminOrders";
+    }
 
     @PostMapping("saveProduct")
     public String saveProduct(@ModelAttribute("nullProduct") ProductInfo productInfo,
