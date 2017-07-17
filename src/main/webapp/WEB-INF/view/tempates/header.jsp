@@ -40,11 +40,16 @@
                         <i></i>
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit"class="btn btn-default">Submit</button>
+                    <%--<a type="submit" class="btn btn-default">Submit</a>--%>
                 </form>
                 <%--EMPTY_STEP--%>
                 <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-                        <li>..........................</li>
+                        <li>
+                            &nbsp; 	&nbsp; 	&nbsp; 	&nbsp;
+                            &nbsp; 	&nbsp; 	&nbsp; 	&nbsp;
+                            &nbsp; 	&nbsp;  &nbsp;  &nbsp;
+                            &nbsp; 	&nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;
+                        </li>
                 </security:authorize>
                 <%--EMPTY_STEP--%>
 

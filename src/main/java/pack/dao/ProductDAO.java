@@ -5,11 +5,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import pack.entity.Product;
-import pack.model.ProductInfo;
 
 import java.util.List;
 
 public interface ProductDAO extends JpaRepository<Product, Integer>, PagingAndSortingRepository<Product, Integer> {
-    Page<Product> findByInStockIsTrueOrderByIdDesc(Pageable pageable);
+
+
+    @Query("select o from Product o where o.genre=:genre")
+    List<Product> findByGenre(@Param("genre") String genre);
 }
