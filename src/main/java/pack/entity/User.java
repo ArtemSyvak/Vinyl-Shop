@@ -19,6 +19,16 @@ public class User implements UserDetails {
     private String email;
     private String address;
     private String phone;
+    private String fullName;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     private boolean accountNonExpired = true;
     private boolean accountNonLocked= true;
     private boolean credentialsNonExpired = true;
@@ -26,12 +36,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-    public User(String username, String password, String email, String address, String phone, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+    public User(String username, String password, String email, String address, String phone, String fullName, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.fullName = fullName;
         this.accountNonExpired = accountNonExpired;
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
@@ -137,6 +148,7 @@ public class User implements UserDetails {
         this.phone = phone;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -144,11 +156,14 @@ public class User implements UserDetails {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + role +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", accountNonExpired=" + accountNonExpired +
                 ", accountNonLocked=" + accountNonLocked +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", enabled=" + enabled +
+                ", role=" + role +
                 '}';
     }
 }

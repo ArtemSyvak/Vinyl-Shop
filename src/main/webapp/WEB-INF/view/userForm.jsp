@@ -2,41 +2,32 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="tempates/header.jsp"%>
 
-<sf:form method="POST" modelAttribute="userInfo"
-           action="${pageContext.request.contextPath}/toConfirmOrder">
+<sf:form method="post" modelAttribute="userInfo" action="toConfirmOrder">
+<h2>Enter delivery information:</h2>
 
-    <table>
-        <tr>
-            <td>Name *</td>
-            <td><sf:input path="name" /></td>
+            Name *
+            <br>
+            <sf:input path="name" value="${userInfo.name}"/>
             <br>
             <sf:errors path="name"></sf:errors>
-            <%--<td><form:errors path="name" class="error-message" /></td>--%>
-        </tr>
-
-        <tr>
-            <td>Phone *</td>
-            <td><sf:input path="phone" /></td>
             <br>
+            Phone
+            <br>
+            <td><sf:input path="phone" value="${userInfo.phone}"/></td>
             <sf:errors path="phone"></sf:errors>
-            <%--<td><form:errors path="phone" class="error-message" /></td>--%>
-        </tr>
-
-        <tr>
-            <td>Address *</td>
-            <td><sf:input path="address" /></td>
             <br>
+            Address*
+            <br>
+            <sf:input path="address" value="${userInfo.address}"/>
             <sf:errors path="address"></sf:errors>
-            <%--<td><form:errors path="address" class="error-message" /></td>--%>
-        </tr>
 
-        <tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" value="Submit" /> <input type="reset"
-                                                              value="Reset" /></td>
-        </tr>
-    </table>
-
+            &nbsp;
+             <br>
+             <input type="submit" value="Submit" />
+             <input type="reset" value="Reset" />
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
 </sf:form>
 
 <%@include file="tempates/footer.jsp"%>

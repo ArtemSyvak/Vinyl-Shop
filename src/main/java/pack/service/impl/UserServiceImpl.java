@@ -42,4 +42,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserInfo findUserInfo(int id) {
         return new UserInfo(userDAO.findOne(id));
     }
+
+    public void setUserSettings(User modelUser) {
+        System.out.println("From serviceImpl" + modelUser);
+        User user = userDAO.findByUserName(modelUser.getUsername());
+        if(user!=null){
+            user.setFullName(modelUser.getFullName());
+            user.setAddress(modelUser.getAddress());
+            user.setPhone(modelUser.getPhone());
+            user.setEmail(modelUser.getEmail());
+            user.setPassword(passwordEncoder.encode(modelUser.getPassword()));
+            userDAO.save(user);
+        }
+
+    }
 }

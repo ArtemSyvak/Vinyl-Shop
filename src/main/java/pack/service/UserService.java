@@ -11,6 +11,7 @@ public interface UserService {
     User findOne(int id);
     UserInfo findUserInfo(int id);
     UserDetails loadUserByUsername(String username);
+    void setUserSettings(User userModel);
 
 
 }

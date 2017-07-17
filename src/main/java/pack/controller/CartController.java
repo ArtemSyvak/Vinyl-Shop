@@ -59,23 +59,27 @@ public class CartController {
     }
 
     @RequestMapping("toUserForm")
-    public String toUserForm(Model model){
+    public String toUserForm(Model model, Principal principal){
         CartInfo cartInfo = cart;
-//        UserInfo userInfo = cart.getUserInfo();
-//        if(userInfo==null){
-//            userInfo = new UserInfo();
-//        }
-        model.addAttribute("userInfo",new UserInfo());
+        UserInfo userInfo = cart.getUserInfo();
+        if(userInfo==null){
+            userInfo = new UserInfo();
+        }
+        User user = userService.findByName(principal.getName());
+        userInfo.setName(user.getFullName());
+        userInfo.setPhone(user.getPhone());
+        userInfo.setAddress(user.getAddress());
+        userInfo.setEmail(user.getEmail());
+        model.addAttribute("userInfo", userInfo);
         model.addAttribute("cartForm", cartInfo);
         return "userForm";
     }
 
     @PostMapping("toConfirmOrder")
-    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo,
-                               BindingResult result,
+    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result,
                                Model model,
-                               Principal principal
-                               ){
+                               Principal principal                               ){
+        System.out.println("hello! "+result.hasErrors());
         if (result.hasErrors()){
             return "userForm";
         }
@@ -98,7 +102,7 @@ public class CartController {
 
     @InitBinder("userInfo")
     public void binder(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(infoValidator);
+        webDataBinder.setValidator(infoValidator);
     }
 
 }
