@@ -20,6 +20,7 @@ import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
 import pack.service.impl.Utils;
+import pack.validator.UserInfoValidator;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -38,8 +39,8 @@ public class CartController {
     @Autowired
     UserService userService;
 
-//    @Autowired
-//    UserInfoValidator infoValidator;
+    @Autowired
+    UserInfoValidator infoValidator;
 
     //PRINCIPAL
 
@@ -58,26 +59,30 @@ public class CartController {
     }
 
     @RequestMapping("toUserForm")
-    public String toUserForm(Model model){
+    public String toUserForm(Model model, Principal principal){
         CartInfo cartInfo = cart;
         UserInfo userInfo = cart.getUserInfo();
         if(userInfo==null){
             userInfo = new UserInfo();
         }
+        User user = userService.findByName(principal.getName());
+        userInfo.setName(user.getFullName());
+        userInfo.setPhone(user.getPhone());
+        userInfo.setAddress(user.getAddress());
+        userInfo.setEmail(user.getEmail());
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("cartForm", cartInfo);
         return "userForm";
     }
 
     @PostMapping("toConfirmOrder")
-    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo,
+    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result,
                                Model model,
-                               Principal principal,
-                               BindingResult result){
-        userInfo.setValid(true);
-//        if (result.hasErrors()){
-//            return "redirect:/toUserForm";
-//        }
+                               Principal principal                               ){
+        System.out.println("hello! "+result.hasErrors());
+        if (result.hasErrors()){
+            return "userForm";
+        }
         cart.setUserInfo(userInfo);
         String username = principal.getName();
         User user = userService.findByName(username);
@@ -95,9 +100,9 @@ public class CartController {
         return "final";
     }
 
-//    @InitBinder("userInfo")
-//    public void binder(WebDataBinder webDataBinder) {
-//        webDataBinder.addValidators(infoValidator);
-//    }
+    @InitBinder("userInfo")
+    public void binder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(infoValidator);
+    }
 
 }

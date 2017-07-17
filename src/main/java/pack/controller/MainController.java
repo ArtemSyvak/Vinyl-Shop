@@ -22,6 +22,7 @@ import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
 import pack.service.impl.Utils;
+import pack.validator.UserInfoValidator;
 import pack.validator.UserValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +48,8 @@ public class MainController {
 
     @Autowired
     UserValidator validator;
+
+
 
     @RequestMapping("/")
     public String toIndex(Model model){
@@ -95,14 +98,23 @@ public class MainController {
     @GetMapping("mySettings")
     public String toSettings(Model model, Principal principal){
         String username = principal.getName();
-        User user = userService.findByName(username);
-        model.addAttribute(user);
+        User userSet = userService.findByName(username);
+        model.addAttribute("userSet", userSet);
         return "settings";
     }
 
+    @PostMapping("saveSettings")
+    public String saveSettings(@ModelAttribute("userSet") User modelUser){
+        System.out.println("from PostMapping " + modelUser);
+        userService.setUserSettings(modelUser);
+        return "userPage";
+    }
 
-    @InitBinder("user")
+
+    @InitBinder("nullUser")
     public void binder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(validator);
     }
+
+
 }
