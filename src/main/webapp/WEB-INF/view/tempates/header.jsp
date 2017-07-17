@@ -41,6 +41,11 @@
                     </div>
                     <button type="submit"class="btn btn-default">Submit</button>
                 </form>
+
+                <security:authorize access="hasRole('ROLE_USER')">
+                    <li><a href="myPage">My Page</a></li>
+                </security:authorize>
+
                 <%--Cart--%>
                 <security:authorize  access="hasRole('ROLE_USER')">
                     <li><a href="myCart">My Cart </a></li>
