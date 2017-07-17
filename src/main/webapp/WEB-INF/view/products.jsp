@@ -7,6 +7,7 @@
         <div class="col-md-1 middle"></div>
         <div class="col-md-3">
             <article>
+
                 Some Text From Article
             </article>
         </div>
@@ -14,20 +15,40 @@
         <div class="col-md-7">
             <aside>
                 <c:forEach var="product" items="${page.content}" varStatus="count" step="3">
-
                     <div class="container mainContainer">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="divProduct">
-                                    <b><img src="${product.image}" style="width: 100px; height: 100px"></b><br>
-                                    <b>Artist:</b> <td>${product.artist}</td><br>
-                                    <b>Album:</b> <td>${product.productName}</td><br>
-                                    <b>Genre:</b> <td>${product.genre}</td><br>
-                                    <b>Release year:</b> <td>${product.releaseYear}</td><br>
-                                    <b>Price:</b> <td>${product.price}</td>
-                                    <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
-                                        Buy Now</a>
-                                    <a href="details-${product.id}">See details</a>
+                                    <div class=" container insideProduct">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <img src="${product.image}" style="width: 195px; height: 150px">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row rowPadding">
+                                                <b>Artist:</b> <td>${product.artist}</td><br>
+                                                <b>Album:</b> <td>${product.productName}</td><br>
+                                                <b>Genre:</b> <td>${product.genre}</td><br>
+                                                <b>Release year:</b> <td>${product.releaseYear}</td><br>
+                                                <b>Price:</b> <td>${product.price}</td>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <a href="details-${product.id}">
+                                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                            </div>
+                                            <div class="col-md-3 col-md-offset-4">
+                                                <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <c:choose>
@@ -35,17 +56,38 @@
 
                                 </c:when>
                                 <c:otherwise>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="divProduct">
-                                            <b><img src="${page.content[count.index+1].image}" style="width: 100px; height: 100px"></b><br>
-                                            <b>Artist:</b> <td>${page.content[count.index+1].artist}</td><br>
-                                            <b>Album:</b> <td>${page.content[count.index+1].productName}</td><br>
-                                            <b>Genre:</b> <td>${page.content[count.index+1].genre}</td><br>
-                                            <b>Release year:</b> <td>${page.content[count.index+1].releaseYear}</td><br>
-                                            <b>Price:</b> <td>${page.content[count.index+1].price}</td>
-                                            <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+1].id}">
-                                                Buy Now</a>
-                                            <a href="details-${page.content[count.index+1].id}">See details</a>
+                                            <div class=" container insideProduct">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <img src="${page.content[count.index+1].image}" style="width: 195px; height: 150px">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row rowPadding">
+                                                    <b>Artist:</b> <td>${page.content[count.index+1].artist}</td><br>
+                                                    <b>Album:</b> <td>${page.content[count.index+1].productName}</td><br>
+                                                    <b>Genre:</b> <td>${page.content[count.index+1].genre}</td><br>
+                                                    <b>Release year:</b> <td>${page.content[count.index+1].releaseYear}</td><br>
+                                                    <b>Price:</b> <td>${page.content[count.index+1].price}</td>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <a href="details-${page.content[count.index+1].id}">
+                                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <div class="col-md-3 col-md-offset-4">
+                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </c:otherwise>
@@ -55,17 +97,38 @@
 
                                 </c:when>
                                 <c:otherwise>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="divProduct">
-                                            <b><img src="${page.content[count.index+2].image}" style="width: 100px; height: 100px"></b><br>
-                                            <b>Artist:</b> <td>${page.content[count.index+2].artist}</td><br>
-                                            <b>Album:</b> <td>${page.content[count.index+2].productName}</td><br>
-                                            <b>Genre:</b> <td>${page.content[count.index+2].genre}</td><br>
-                                            <b>Release year:</b> <td>${page.content[count.index+2].releaseYear}</td><br>
-                                            <b>Price:</b> <td>${page.content[count.index+2].price}</td>
-                                            <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+2].id}">
-                                                Buy Now</a>
-                                            <a href="details-${page.content[count.index+2].id}">See details</a>
+                                            <div class=" container insideProduct">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <img src="${page.content[count.index+2].image}" style="width: 195px; height: 150px">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row rowPadding">
+                                                    <b>Artist:</b> <td>${page.content[count.index+2].artist}</td><br>
+                                                    <b>Album:</b> <td>${page.content[count.index+2].productName}</td><br>
+                                                    <b>Genre:</b> <td>${page.content[count.index+2].genre}</td><br>
+                                                    <b>Release year:</b> <td>${page.content[count.index+2].releaseYear}</td><br>
+                                                    <b>Price:</b> <td>${page.content[count.index+2].price}</td>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <a href="details-${page.content[count.index+2].id}">
+                                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <div class="col-md-3 col-md-offset-4">
+                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </c:otherwise>
@@ -77,80 +140,6 @@
         </div>
     </div>
 </div>
-
-
-
-<%--<aside>--%>
-<%--<c:forEach var="product" items="${page.content}" varStatus="count" step="3">--%>
-
-    <%--<div class="container">--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-4">--%>
-                <%--<div class="divProduct">--%>
-                    <%--<b><img src="${product.image}" style="width: 100px; height: 100px"></b><br>--%>
-                <%--<b>Artist:</b> <td>${product.artist}</td><br>--%>
-                <%--<b>Album:</b> <td>${product.productName}</td><br>--%>
-                <%--<b>Genre:</b> <td>${product.genre}</td><br>--%>
-                <%--<b>Release year:</b> <td>${product.releaseYear}</td><br>--%>
-                <%--<b>Price:</b> <td>${product.price}</td>--%>
-                    <%--<a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">--%>
-                        <%--Buy Now</a>--%>
-                    <%--<a href="details-${product.id}">See details</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<c:choose>--%>
-                <%--<c:when test="${page.content[count.index+1] == null}">--%>
-
-                <%--</c:when>--%>
-                <%--<c:otherwise>--%>
-                    <%--<div class="col-md-4">--%>
-                        <%--<div class="divProduct">--%>
-                            <%--<b><img src="${page.content[count.index+1].image}" style="width: 100px; height: 100px"></b><br>--%>
-                            <%--<b>Artist:</b> <td>${page.content[count.index+1].artist}</td><br>--%>
-                            <%--<b>Album:</b> <td>${page.content[count.index+1].productName}</td><br>--%>
-                            <%--<b>Genre:</b> <td>${page.content[count.index+1].genre}</td><br>--%>
-                            <%--<b>Release year:</b> <td>${page.content[count.index+1].releaseYear}</td><br>--%>
-                            <%--<b>Price:</b> <td>${page.content[count.index+1].price}</td>--%>
-                            <%--<a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+1].id}">--%>
-                                <%--Buy Now</a>--%>
-                            <%--<a href="details-${page.content[count.index+1].id}">See details</a>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</c:otherwise>--%>
-            <%--</c:choose>--%>
-            <%--<c:choose>--%>
-                <%--<c:when test="${page.content[count.index+2] == null}">--%>
-
-                <%--</c:when>--%>
-                <%--<c:otherwise>--%>
-                    <%--<div class="col-md-4">--%>
-                        <%--<div class="divProduct">--%>
-                            <%--<b><img src="${page.content[count.index+2].image}" style="width: 100px; height: 100px"></b><br>--%>
-                            <%--<b>Artist:</b> <td>${page.content[count.index+2].artist}</td><br>--%>
-                            <%--<b>Album:</b> <td>${page.content[count.index+2].productName}</td><br>--%>
-                            <%--<b>Genre:</b> <td>${page.content[count.index+2].genre}</td><br>--%>
-                            <%--<b>Release year:</b> <td>${page.content[count.index+2].releaseYear}</td><br>--%>
-                            <%--<b>Price:</b> <td>${page.content[count.index+2].price}</td>--%>
-                            <%--<a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+2].id}">--%>
-                                <%--Buy Now</a>--%>
-                            <%--<a href="details-${page.content[count.index+2].id}">See details</a>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</c:otherwise>--%>
-            <%--</c:choose>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</c:forEach>--%>
-<%--</aside>--%>
-
-
-
-
-
-
-
-
-
 <div align="center"><h3>Viewing page ${page.number + 1} of ${page.totalPages}</h3></div>
 <div class="pageCounter">
     <h3 align="center"><c:forEach var="i" begin="1" end="${page.totalPages}">

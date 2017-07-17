@@ -10,38 +10,34 @@ a:hover, a:active{
     color: #0B9BA9!important;
     transition: 0.3s;
 }
+article{
+
+    margin-top: 20px;
+    height: 400px;
+    background-color: #0B9BA9;
+
+}
+
 .pageCounter{
     background-color: #B50B1E;
 }
 
 .divProduct{
     width: 200px;
-    height: 280px;
-    padding: 20px;
-    margin: 15px;
+    height: 315px;
+    padding: 15px;
+    margin: 20px -30px 10px 0px;
     background-color: floralwhite;
     color: #0D1130;
     border: solid 1px #2E7866;
 }
 
-article{
-
-    margin-top: 15px;
-    height: 400px;
-    background-color: #0B9BA9;
-
-}
-
-aside{
-
-}
-
 .middle{
-    width: 30px;
+    width: 10px;
 }
 
 .mainContainer{
-    max-width: 970px;
+    max-width: 830px;
 }
 
 .divProductDetails{
@@ -96,4 +92,28 @@ aside{
     border: 1px solid black;
     padding: 0px 5px;
     width: 900px;
+}
+
+.insideProduct{
+    max-width: 200px;
+    margin-left: -10px;
+}
+
+.rowPadding{
+    padding-left: 14px;
+    margin-bottom: 5px;
+}
+i{
+    color: #0D1130!important;
+    font-size: 25px!important;
+    transition: 0.3s;
+}
+i:hover{
+    color: #0B9BA9!important;
+    transition: 0.3s;
+}
+
+img{
+    margin-top: -13px;
+    margin-left: -18px;
 }

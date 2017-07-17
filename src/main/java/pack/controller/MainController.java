@@ -73,14 +73,6 @@ public class MainController {
         return "userPage";
     }
 
-//
-//    @RequestMapping("addNull")
-//    public String signUp(Model model){
-//        model.addAttribute("nullUser" ,new User());
-//        return "index";
-//    }
-
-
     @PostMapping("save")
     public String save(@ModelAttribute("nullUser") @Valid User user,
                        BindingResult result){
@@ -88,7 +80,7 @@ public class MainController {
             return "index";
         }
         userService.save(user);
-        mailService.send(user.getEmail());
+//        mailService.send(user.getEmail());
         return "index";
     }
 

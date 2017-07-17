@@ -41,6 +41,11 @@
                     </div>
                     <button type="submit"class="btn btn-default">Submit</button>
                 </form>
+                <%--EMPTY_STEP--%>
+                <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                        <li>..........................</li>
+                </security:authorize>
+                <%--EMPTY_STEP--%>
 
                 <security:authorize access="hasRole('ROLE_USER')">
                     <li><a href="myPage">My Page</a></li>

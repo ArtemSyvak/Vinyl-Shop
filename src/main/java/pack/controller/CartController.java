@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pack.dao.OrderDAO;
@@ -19,6 +21,7 @@ import pack.service.ProductService;
 import pack.service.UserService;
 import pack.service.impl.Utils;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -34,6 +37,11 @@ public class CartController {
 
     @Autowired
     UserService userService;
+
+//    @Autowired
+//    UserInfoValidator infoValidator;
+
+    //PRINCIPAL
 
     @RequestMapping("/addToCart")
     public String addToCart(@RequestParam("id") int id){
@@ -60,24 +68,17 @@ public class CartController {
         model.addAttribute("cartForm", cartInfo);
         return "userForm";
     }
-//
-//    @GetMapping("toUserForm")
-//    public String linkToUserForm(Model model){
-//        CartInfo cartInfo = cart;
-//        UserInfo userInfo = cart.getUserInfo();
-//        if(userInfo==null){
-//            userInfo = new UserInfo();
-//        }
-//        model.addAttribute("userInfo", userInfo);
-//        model.addAttribute("cartForm", cartInfo);
-//        return "userForm";
-//    }
 
     @PostMapping("toConfirmOrder")
-    public String userFormSave(@ModelAttribute("userInfo") UserInfo userInfo, Model model, Principal principal){
+    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo,
+                               Model model,
+                               Principal principal,
+                               BindingResult result){
         userInfo.setValid(true);
+//        if (result.hasErrors()){
+//            return "redirect:/toUserForm";
+//        }
         cart.setUserInfo(userInfo);
-
         String username = principal.getName();
         User user = userService.findByName(username);
         cart.getUserInfo().setEmail(user.getEmail());
@@ -93,5 +94,10 @@ public class CartController {
         model.addAttribute("order", order);
         return "final";
     }
+
+//    @InitBinder("userInfo")
+//    public void binder(WebDataBinder webDataBinder) {
+//        webDataBinder.addValidators(infoValidator);
+//    }
 
 }
