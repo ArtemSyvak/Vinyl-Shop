@@ -10,6 +10,7 @@ import pack.entity.Product;
 import pack.model.ProductInfo;
 import pack.service.ProductService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,5 +48,10 @@ public class ProductServiceImpl implements ProductService {
 
     public Page<Product> listAllByPage(Pageable pageable) {
         return productDAO.findAll(pageable);
+    }
+
+
+    public List<Product> findByGenre(String genre) {
+        return productDAO.findByGenre(genre);
     }
 }
