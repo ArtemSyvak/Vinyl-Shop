@@ -43,7 +43,7 @@ i:hover{
 }
 
 .pageCounter{
-    background-color: #2E7866;
+    background-color: #248888;
 }
 
 .divProduct{
@@ -178,13 +178,14 @@ i:hover{
     background-color: #248888!important;
     padding: 20px;
     width: 200px;
-    color: #EDECF4!important;
+    color: #FFFFFF!important;
     border-radius: 5px!important;
     border: solid 1px #E6E6E6!important;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .checkIt:hover{
+    opacity: 0.8;
     width: 240px;
 }
 .checkIt a{
@@ -192,7 +193,7 @@ i:hover{
 }
 
 h1>a:hover{
-    color: #FFFFFF!important;
+    color: #F2C640!important;
 }
 
 
