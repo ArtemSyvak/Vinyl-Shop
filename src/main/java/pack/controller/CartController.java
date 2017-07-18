@@ -51,6 +51,12 @@ public class CartController {
         return "redirect:myCart";
     }
 
+    @RequestMapping("/removeFromCart")
+    public String removeFromCart(@RequestParam("id") int id){
+        cart.removeProduct(id);
+        return "redirect:myCart";
+    }
+
     @RequestMapping("myCart")
     public String toCart(Model model){
         CartInfo cartInfo = cart;
@@ -86,6 +92,10 @@ public class CartController {
         cart.setUserInfo(userInfo);
         String username = principal.getName();
         User user = userService.findByName(username);
+        user.setAddress(userInfo.getAddress());
+        user.setPhone(userInfo.getPhone());
+        user.setFullName(userInfo.getName());
+        userService.save(user);
         cart.getUserInfo().setEmail(user.getEmail());
 
         CartInfo cartInfo = cart;

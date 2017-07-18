@@ -39,6 +39,11 @@ public class AdminController {
         return "adminPage";
     }
 
+    @GetMapping("admin/admin_orders")
+    public String backtothefurureOrders(){
+        return "redirect:/admin/admin_orders";
+    }
+
     @GetMapping("admin/admin_page")
     public String backtothefurure(){
         return "redirect:/admin/admin_page";

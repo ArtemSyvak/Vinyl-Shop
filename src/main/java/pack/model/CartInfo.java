@@ -54,6 +54,11 @@ public class CartInfo {
         }
     }
 
+    public void removeProduct(int id){
+        CartLineInfo line = this.findLineById(id);
+        this.cartLines.remove(line);
+    }
+
     public void validate(){
 
     }
@@ -76,10 +81,6 @@ public class CartInfo {
         if(line != null){
             if(this.cartLines.remove(line));
         }
-    }
-
-    public boolean isEmpty(){
-        return  this.cartLines.isEmpty();
     }
 
     public boolean isValidCustomer(){

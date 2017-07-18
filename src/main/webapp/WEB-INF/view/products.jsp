@@ -121,7 +121,7 @@
                                                         <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-md-3 col-md-offset-4">
-                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+1].id}">
                                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                         </a>
                                                     </div>
@@ -162,7 +162,7 @@
                                                         <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-md-3 col-md-offset-4">
-                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${product.id}">
+                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${page.content[count.index+2].id}">
                                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                         </a>
                                                     </div>

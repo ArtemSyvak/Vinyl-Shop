@@ -5,6 +5,7 @@
 <c:forEach var="order" items="${orderList}">
 
     <div class="customer-info-container">
+        <h2>Order #${order.id}</h2>
         <h3>Customer Information:</h3>
         <ul>
             <li>Name: ${order.customerName}</li>
@@ -19,17 +20,19 @@
         </ul>
         <br>
         <table>
-            <c:forEach items="orderDetails" var="orderDetail">
+            <c:forEach items="${orderDetails}" var="orderDetail">
                 <c:if test="${orderDetail.order.id==order.id}">
                     <tr>
-                        <td>${orderDetail.product.artist} - ${orderDetail.product.productName}</td>
-                        <td>${orderDetail.quantity}</td>
+                        <td>${orderDetail.product.artist} - ${orderDetail.product.productName}--------</td>
+                        <td>Quantity -- ${orderDetail.quantity}</td>
                     </tr>
                 </c:if>
             </c:forEach>
 
         </table>
     </div>
+    <br>
 </c:forEach>
+
 
 <%@include file="tempates/footer.jsp"%>
