@@ -6,9 +6,9 @@
         <div class="col-md-12 footerFun" >
             <br>
             <br>
-            <h2 align="center">Artem Syvak &nbsp;&nbsp; Nikita Nikiforov</h2>
+            <h2 align="center">Artem Syvak&nbsp;<a href="https://github.com/nikita-nikiforov/room705"><i class="fa fa-github" aria-hidden="true"></i></a>&nbsp;Nikita Nikiforov</h2>
             <br>
-            <h1 align="center">2017!!!</h1>
+            <h3 align="center">2017</h3>
         </div>
     </div>
 </div>

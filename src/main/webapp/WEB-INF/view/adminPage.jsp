@@ -32,6 +32,9 @@
                 <br>
                 <input type="file" name="file">
                 <input type="submit" value="Add">
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
             </sf:form>
 </div>
 </body>

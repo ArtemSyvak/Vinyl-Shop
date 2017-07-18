@@ -77,7 +77,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-md-2">
-                                                <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                                <a href="https://www.last.fm/music/${product.artist}"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                             </div>
                                             <div class="col-md-3 col-md-offset-4">
                                                 <security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
@@ -85,7 +85,7 @@
                                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                     </a>
                                                 </security:authorize>
-                                                <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                                                     <a href="#registryModal" data-toggle="modal">
                                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                     </a>
@@ -155,7 +155,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                                        <a href="https://www.last.fm/music/${page.content[count.index+1].artist}"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                     </div>
 
                                                     <div class="col-md-3 col-md-offset-4">
@@ -164,7 +164,7 @@
                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                             </a>
                                                         </security:authorize>
-                                                        <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                        <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                                                             <a href="#registryModal" data-toggle="modal">
                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                             </a>
@@ -237,7 +237,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
+                                                        <a href="https://www.last.fm/music/${page.content[count.index+2].artist}"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-md-3 col-md-offset-4">
                                                         <security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
@@ -245,7 +245,7 @@
                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                             </a>
                                                         </security:authorize>
-                                                        <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                        <security:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                                                             <a href="#registryModal" data-toggle="modal">
                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                             </a>
