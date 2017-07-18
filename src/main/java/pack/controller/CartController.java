@@ -12,6 +12,7 @@ import pack.entity.User;
 import pack.model.CartInfo;
 import pack.model.ProductInfo;
 import pack.model.UserInfo;
+import pack.service.MailService;
 import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
@@ -33,6 +34,9 @@ public class CartController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    MailService mailService;
 
     @Autowired
     UserInfoValidator infoValidator;
@@ -101,6 +105,8 @@ public class CartController {
     @PostMapping("confirmOrder")
     public String toFinalPage(Model model){
         Order order = orderService.saveOrder(cart);
+        String email = order.getCustomerEmail();
+        mailService.sendOrder(email);
         model.addAttribute("order", order);
         return "final";
     }

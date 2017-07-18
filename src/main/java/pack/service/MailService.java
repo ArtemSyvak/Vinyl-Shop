@@ -5,5 +5,6 @@ package pack.service;
  */
 public interface MailService {
 
-    void send(String email);
+    void sendWelcome(String email);
+    void sendOrder(String email);
 }
