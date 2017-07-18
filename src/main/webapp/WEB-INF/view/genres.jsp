@@ -90,9 +90,49 @@
                                                         <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-md-3 col-md-offset-4">
-                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${gener.id}">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
+                                                            <security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                                                <a href="${pageContext.request.contextPath}/addToCart?id=${gener.id}">
+                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                </a>
+                                                            </security:authorize>
+                                                            <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                                <a href="#registryModal" data-toggle="modal">
+                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                </a>
+                                                                <div class="modal fade" id="registryModal" tabindex="-1">
+                                                                    <div class="modal-dialog modal-sm">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button class="close" data-dismiss="modal">x</button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <sf:form action="save" method="post" modelAttribute="nullUser">
+                                                                                    Email
+                                                                                    <br>
+                                                                                    <sf:input path="email"></sf:input>
+                                                                                    <sf:errors path="email"></sf:errors>
+                                                                                    <br>
+                                                                                    Username
+                                                                                    <br>
+                                                                                    <sf:input path="username"></sf:input>
+                                                                                    <sf:errors path="username"></sf:errors>
+                                                                                    <br>
+                                                                                    Password
+                                                                                    <br>
+                                                                                    <sf:password path="password"></sf:password>
+                                                                                    <sf:errors path="password"></sf:errors>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <input type="submit" value="Registry">
+                                                                                    <input type="hidden"
+                                                                                           name="${_csrf.parameterName}"
+                                                                                           value="${_csrf.token}"/>
+                                                                                </sf:form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </security:authorize>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,9 +168,49 @@
                                                                 <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                             </div>
                                                             <div class="col-md-3 col-md-offset-4">
-                                                                <a href="${pageContext.request.contextPath}/addToCart?id=${gener.id}">
-                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                </a>
+                                                                    <security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${genreList[count.index+1].id}">
+                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </security:authorize>
+                                                                    <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                                        <a href="#registryModal" data-toggle="modal">
+                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                        </a>
+                                                                        <div class="modal fade" id="registryModal" tabindex="-1">
+                                                                            <div class="modal-dialog modal-sm">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button class="close" data-dismiss="modal">x</button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <sf:form action="save" method="post" modelAttribute="nullUser">
+                                                                                            Email
+                                                                                            <br>
+                                                                                            <sf:input path="email"></sf:input>
+                                                                                            <sf:errors path="email"></sf:errors>
+                                                                                            <br>
+                                                                                            Username
+                                                                                            <br>
+                                                                                            <sf:input path="username"></sf:input>
+                                                                                            <sf:errors path="username"></sf:errors>
+                                                                                            <br>
+                                                                                            Password
+                                                                                            <br>
+                                                                                            <sf:password path="password"></sf:password>
+                                                                                            <sf:errors path="password"></sf:errors>
+                                                                                            <br>
+                                                                                            <br>
+                                                                                            <input type="submit" value="Registry">
+                                                                                            <input type="hidden"
+                                                                                                   name="${_csrf.parameterName}"
+                                                                                                   value="${_csrf.token}"/>
+                                                                                        </sf:form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </security:authorize>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -168,9 +248,49 @@
                                                                 <a href="#"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a>
                                                             </div>
                                                             <div class="col-md-3 col-md-offset-4">
-                                                                <a href="${pageContext.request.contextPath}/addToCart?id=${gener.id}">
-                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                </a>
+                                                                    <security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                                                        <a href="${pageContext.request.contextPath}/addToCart?id=${genreList[count.index+2].id}">
+                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </security:authorize>
+                                                                    <security:authorize access="!hasAnyRole('ROLE_USER')">
+                                                                        <a href="#registryModal" data-toggle="modal">
+                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                        </a>
+                                                                        <div class="modal fade" id="registryModal" tabindex="-1">
+                                                                            <div class="modal-dialog modal-sm">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button class="close" data-dismiss="modal">x</button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <sf:form action="save" method="post" modelAttribute="nullUser">
+                                                                                            Email
+                                                                                            <br>
+                                                                                            <sf:input path="email"></sf:input>
+                                                                                            <sf:errors path="email"></sf:errors>
+                                                                                            <br>
+                                                                                            Username
+                                                                                            <br>
+                                                                                            <sf:input path="username"></sf:input>
+                                                                                            <sf:errors path="username"></sf:errors>
+                                                                                            <br>
+                                                                                            Password
+                                                                                            <br>
+                                                                                            <sf:password path="password"></sf:password>
+                                                                                            <sf:errors path="password"></sf:errors>
+                                                                                            <br>
+                                                                                            <br>
+                                                                                            <input type="submit" value="Registry">
+                                                                                            <input type="hidden"
+                                                                                                   name="${_csrf.parameterName}"
+                                                                                                   value="${_csrf.token}"/>
+                                                                                        </sf:form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </security:authorize>
                                                             </div>
                                                         </div>
                                                     </div>

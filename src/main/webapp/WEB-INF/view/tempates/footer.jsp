@@ -1,4 +1,21 @@
 
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 footerFun" >
+            <br>
+            <br>
+            <h2 align="center">Artem Syvak &nbsp;&nbsp; Nikita Nikiforov</h2>
+            <br>
+            <h1 align="center">2017!!!</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
 <!--scripts-->
 <script src="/static/javascript/main.js"></script>
 <!--  -->

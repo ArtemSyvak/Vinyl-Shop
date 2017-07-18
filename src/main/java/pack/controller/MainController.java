@@ -1,31 +1,21 @@
 package pack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import pack.entity.Order;
 import pack.entity.OrderDetail;
 import pack.entity.Product;
 import pack.entity.User;
-import pack.model.CartInfo;
-import pack.model.ProductInfo;
 import pack.service.MailService;
 import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
-import pack.service.impl.Utils;
-import pack.validator.UserInfoValidator;
 import pack.validator.UserValidator;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -89,6 +79,7 @@ public class MainController {
 
     @GetMapping("details-{id}")
     public String toDetailsPage(@PathVariable("id") int id, Model model){
+        model.addAttribute("nullUser", new User());
         Product product = productService.findOne(id);
         model.addAttribute("product",product);
         return "details";

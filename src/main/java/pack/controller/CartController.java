@@ -2,15 +2,11 @@ package pack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import pack.dao.OrderDAO;
-import pack.dao.ProductDAO;
 import pack.entity.Order;
 import pack.entity.User;
 import pack.model.CartInfo;
@@ -19,7 +15,6 @@ import pack.model.UserInfo;
 import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
-import pack.service.impl.Utils;
 import pack.validator.UserInfoValidator;
 
 import javax.validation.Valid;
@@ -108,6 +103,12 @@ public class CartController {
         Order order = orderService.saveOrder(cart);
         model.addAttribute("order", order);
         return "final";
+    }
+    @RequestMapping("/genre/myCart")
+    public String backCart(Model model){
+        CartInfo cartInfo = cart;
+        model.addAttribute("cartForm", cartInfo);
+        return "cartPage";
     }
 
     @InitBinder("userInfo")

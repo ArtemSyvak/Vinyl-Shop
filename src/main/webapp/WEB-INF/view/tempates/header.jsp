@@ -22,7 +22,7 @@
 <nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand">Vinyl Shop</a>
+            <a href="/" class="navbar-brand">Vinyl Shop</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -71,7 +71,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button class="close" data-dismiss="modal">x</button>
-                                    <h4 class="modal-title" align="center">Registration</h4>
+                                    <h4 class="modal-title" align="center">Welcome! Please registry and login, have fun!</h4>
                                 </div>
                                 <div class="modal-body">
                                     <sf:form action="save" method="post" modelAttribute="nullUser">
@@ -122,6 +122,7 @@
                                         Password
                                         <br>
                                         <input type="password" name="password">
+                                        <br>
                                         <br>
                                         <input type="submit" value="Sign In">
                                         <input type="hidden"

@@ -1,5 +1,5 @@
 body{
-    background-color: #AEB8C3;
+    background-image: url("//c1.staticflickr.com/4/3338/3244170129_230a3d5d15_b.jpg");
 }
 
 a{
@@ -22,7 +22,16 @@ article >a{
 img{
     margin-top: -15px;
     margin-left: -20px;
+    opacity: 0.9;!important;
+    filter: alpha(opacity=50)!important;
 }
+
+
+img:hover {
+    opacity: 1.0;!important;
+    filter: alpha(opacity=100)!important;
+}
+
 i{
     color: #0D1130!important;
     font-size: 25px!important;
@@ -34,7 +43,7 @@ i:hover{
 }
 
 .pageCounter{
-    background-color: #B50B1E;
+    background-color: #2E7866;
 }
 
 .divProduct{
@@ -45,6 +54,11 @@ i:hover{
     background-color: floralwhite;
     color: #0D1130;
     border: solid 1px #2E7866;
+    transition: 0.3s;
+}
+.divProduct:hover{
+    box-shadow: 1px 5px 83px -4px #2E7866 ;
+    transition: 0.3s;
 }
 
 .middle{
@@ -146,6 +160,41 @@ i:hover{
     border-radius: 10px;
     background-color: #248888;
 }
+
+.footerFun{
+    margin-top: -14px;
+    height: 200px;
+    background-color: #263149!important;
+    color: #E6E6E6!important;
+}
+
+.indexPhoto{
+    margin-top: -20px;
+    height: 700px;
+}
+
+.checkIt{
+    background-color: #248888!important;
+    padding: 20px;
+    width: 200px;
+    color: #EDECF4!important;
+    border-radius: 5px!important;
+    border: solid 1px #E6E6E6!important;
+    opacity: 0.6;
+}
+
+.checkIt:hover{
+    width: 240px;
+}
+.checkIt a{
+    text-decoration: none;
+}
+
+h1>a:hover{
+    color: #FFFFFF!important;
+}
+
+
 
 
 

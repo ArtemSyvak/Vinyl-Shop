@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pack.entity.Product;
+import pack.entity.User;
 import pack.model.CartInfo;
 import pack.model.ProductInfo;
 import pack.service.ProductService;
@@ -22,7 +23,6 @@ import java.util.List;
 
 @Controller
 public class FilterController {
-    private CartInfo cart = new CartInfo();
 
     @Autowired
     ProductService productService;
@@ -31,7 +31,7 @@ public class FilterController {
 
     @RequestMapping("genre/{name}")
     public String genres(@PathVariable(value = "name") String name, Model model){
-
+        model.addAttribute("nullUser" , new User());
         List<Product> genreList = productService.findByGenre(name);
         model.addAttribute("genreList", genreList);
         return "genres";
@@ -99,8 +99,11 @@ public class FilterController {
         return "redirect:/myPage";
     }
 
+
+
     @GetMapping("/genre/details-{id}")
     public String toDetailsPage(@PathVariable("id") int id, Model model){
+        model.addAttribute("nullUser", new User());
         Product product = productService.findOne(id);
         model.addAttribute("product",product);
         return "details";
