@@ -14,7 +14,6 @@ article{
     margin-left: 60px;
     height: 400px;
     padding: 20px 10px 20px 60px;
-    /*background-color: #AEB8C3;*/
 }
 article >a{
     color: #0D1130!important;
@@ -80,7 +79,7 @@ i:hover{
 }
 
 .navbar-inverse{
-    background-color: #263149;
+    background-color: #263149!important;
 }
 
 .navbar-brand {
@@ -166,7 +165,7 @@ i:hover{
     height: 200px;
     background-color: #263149!important;
     color: #E6E6E6!important;
-    border-top: solid 3px #248888;
+    border-top: solid 2px #248888;
 }
 
 .indexPhoto{
@@ -194,6 +193,10 @@ i:hover{
 
 h1>a:hover{
     color: #F2C640!important;
+}
+.fixedLable{
+    position: fixed;
+    right: 530px;
 }
 
 

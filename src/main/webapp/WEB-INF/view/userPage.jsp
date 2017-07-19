@@ -4,6 +4,7 @@
 
 <a href="#">My Orders</a>
 <a href="mySettings">My Settings</a>
+
 <c:forEach var="order" items="${list}" >
     <h1>Order #${order.id}</h1>
     <div class="orderInfo">
@@ -36,5 +37,24 @@
         </ul>
     </div>
 </c:forEach>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <%@include file="tempates/footer.jsp"%>

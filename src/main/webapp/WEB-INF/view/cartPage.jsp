@@ -89,4 +89,6 @@
 
 </div>
 </c:if>
+
+<br><br>
 <%@include file="tempates/footer.jsp"%>

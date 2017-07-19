@@ -12,10 +12,11 @@
             <br>
             <br>
             <br>
-
+            <div class="fixedLable">
             <h1 align="center" style="color: #EFEBD9">WE ARE OPENED</h1>
             <br>
             <h1 align="center"><a href="/products" class="btn  checkIt">CHECK IT</a></h1>
+            </div>
         </div>
     </div>
 </div>
