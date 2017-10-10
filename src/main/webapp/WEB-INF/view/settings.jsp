@@ -45,11 +45,15 @@
 
         <tr>
             <td>&nbsp;</td>
-            <td><input type="submit" value="Save shanges" /></td>
+            <td><input type="submit" value="Save changes" /></td>
         </tr>
     </table>
 </sf:form>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <%@include file="tempates/footer.jsp"%>

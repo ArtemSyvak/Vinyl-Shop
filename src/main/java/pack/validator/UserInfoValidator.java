@@ -14,7 +14,7 @@ import pack.model.UserInfo;
 @Component
 public class UserInfoValidator implements Validator {
 
-   // Email address phone name
+   // Email address phone n
 
     public boolean supports(Class<?> aClass) {
         return aClass.equals(UserInfo.class);

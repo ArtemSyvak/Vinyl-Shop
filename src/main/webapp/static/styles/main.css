@@ -1,207 +1,70 @@
 body{
-    background-image: url("//c1.staticflickr.com/4/3338/3244170129_230a3d5d15_b.jpg");
+    background-color: #EFF1F3;
 }
-
-a{
-    color: #AEB8C3!important;
-    transition: 0.3s;
+.navbar-light .navbar-brand{
+    color: #F4F4F4;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 0.4s;
 }
-a:hover, a:active{
-    color: #0B9BA9!important;
-    transition: 0.3s;
+.navbar-light .navbar-nav .nav-link{
+    color: #F4F4F4;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.4s;
 }
-article{
-    margin-left: 60px;
-    height: 400px;
-    padding: 20px 10px 20px 60px;
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-brand:hover{
+    transition: 0.4s;
+    color: #FF5A09;
 }
-article >a{
-    color: #0D1130!important;
-}
-img{
-    margin-top: -15px;
-    margin-left: -20px;
-    opacity: 0.9;!important;
-    filter: alpha(opacity=50)!important;
-}
-
-
-img:hover {
-    opacity: 1.0;!important;
-    filter: alpha(opacity=100)!important;
-}
-
-i{
-    color: #0D1130!important;
-    font-size: 25px!important;
-    transition: 0.3s;
-}
-i:hover{
-    color: #0B9BA9!important;
-    transition: 0.3s;
-}
-
-.pageCounter{
-    background-color: #248888;
-}
-
-.divProduct{
-    width: 202px;
-    height: 290px;
-    padding: 15px;
-    margin: 20px -30px 10px 0px;
-    background-color: floralwhite;
-    color: #0D1130;
-    border: solid 1px #2E7866;
-    transition: 0.3s;
-}
-.divProduct:hover{
-    box-shadow: 1px 5px 83px -4px #2E7866 ;
-    transition: 0.3s;
-}
-
-.middle{
-    width: 10px;
-}
-
-.mainContainer{
-    max-width: 750px;
-}
-
-.divProductDetails{
-    width: 700px;
-    height: 400px;
-    padding: 20px;
-    margin: 15px;
-    background-color: floralwhite;
-    color: #0D1130;
-    border: solid 1px #2E7866;
-}
-
-.navbar-inverse{
-    background-color: #263149!important;
-}
-
-.navbar-brand {
-     font-size: 40px;
- }
-
- ul.nav{
-    font-size: 18px;
-}
-
-.customer-info-container {
-    text-align: left;
-    border: 1px solid black;
-    padding: 0px 5px;
-    width: 500px;
-}
-.page-title  {
-    font-size:120%;
-    text-align: left;
-    margin:10px 0px;
-}
-.total {
-    color: black;
-    font-weight: bold;
-    font-size: 120%;
-}
-.orderDetail{
-    width: 250px;
-    height: 150px;
-    padding: 20px;
-    margin: 15px;
-    background-color: floralwhite;
-    color: #0D1130;
-    border: solid 1px #2E7866;
-}
-.orderInfo {
-    text-align: left;
-    border: 1px solid black;
-    padding: 0px 5px;
-    width: 900px;
-}
-
-.insideProduct{
-    max-width: 200px;
-    margin-left: -10px;
-}
-
-.rowPadding{
-    padding-left: 14px;
-    margin-bottom: 5px;
-    margin-top: -60px;
-
-}
-
-.panel-group{
-    position: fixed;
+.form-inline .form-control{
     width: 200px;
+    color: #fff;
+    background-color: #17a2b8;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+.form-inline .form-control::-webkit-input-placeholder{
+    color: #fff;
+}
+.form-inline .form-control:focus{
+    transition: 0.4s;
+    width: 280px;
+}
+.form-inline .form-control::selection{
+    color: #FF5A09;
 }
 
-.panel{
-    padding-left: 20px;
+.social-enter{
+    text-align: center;
+}
+.social-enter i{
+    width: 40px;
+    height: 40px;
+    padding-top: 12px;
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+    border-radius: 40px;
+    transition: 0.4s;
+}
+.social-enter:hover i{
+    background-color: #17a2b8;
+    color: #F4F4F4;
+    transition: 0.4s;
 }
 
-.panel-body{
-    max-height: 420px;
-    overflow-y: scroll;
+#search{
+    position: relative;
 }
-
-#styleScroll::-webkit-scrollbar{
-    width: 7px;
-    border-radius: 12px;
-    background-color: #E6E6E6;
+#search>label{
+    padding-left: 5px;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 16px;
 }
-#styleScroll::-webkit-scrollbar-thumb
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #248888;
-}
-
-.footerFun{
-    margin-top: -14px;
-    height: 200px;
-    background-color: #263149!important;
-    color: #E6E6E6!important;
-    border-top: solid 2px #248888;
-}
-
-.indexPhoto{
-    margin-top: -20px;
-    height: 700px;
-}
-
-.checkIt{
-    background-color: #248888!important;
-    padding: 20px;
-    width: 200px;
-    color: #FFFFFF!important;
-    border-radius: 5px!important;
-    border: solid 1px #E6E6E6!important;
-    opacity: 0.5;
-}
-
-.checkIt:hover{
-    opacity: 0.8;
-    width: 240px;
-}
-.checkIt a{
-    text-decoration: none;
-}
-
-h1>a:hover{
-    color: #F2C640!important;
-}
-.fixedLable{
-    position: fixed;
-    right: 530px;
-}
-
-
-
-
 
 
 

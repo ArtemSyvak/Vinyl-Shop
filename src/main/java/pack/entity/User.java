@@ -68,7 +68,6 @@ public class User implements UserDetails {
     }
 
     public int getId() {
-
         return id;
     }
 

@@ -17,6 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("pack.dao")
@@ -69,6 +70,7 @@ public class DataConfig {
         factoryBean.setJpaProperties(properties);
         return factoryBean;
     }
+
 
     @Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {

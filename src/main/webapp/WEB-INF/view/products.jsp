@@ -15,7 +15,7 @@
                         <div class="collapse in " id="edm" >
                             <div class="panel-body " id="styleScroll">
                                   <a href="genre/alternative">Alternative</a>
-                                        <hr>
+                                <hr>
                                    <a href="genre/blues">Blues</a>
                                 <hr>
                                    <a href="genre/electronic">Electronic</a>
