@@ -58,11 +58,11 @@ public class CartController {
 
     @RequestMapping("myCart")
     public String toCart(Model model){
-        CartInfo cartInfo = cart;
-        model.addAttribute("cartForm", cartInfo);
+        model.addAttribute("cartForm", cart);
         return "cartPage";
     }
 
+    /// переписать логику
     @RequestMapping("toUserForm")
     public String toUserForm(Model model, Principal principal){
         CartInfo cartInfo = cart;
@@ -83,7 +83,7 @@ public class CartController {
     @PostMapping("toConfirmOrder")
     public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result,
                                Model model,
-                               Principal principal                               ){
+                               Principal principal){
         System.out.println("hello! "+result.hasErrors());
         if (result.hasErrors()){
             return "userForm";
