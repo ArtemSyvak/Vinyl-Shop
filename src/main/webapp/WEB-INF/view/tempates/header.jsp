@@ -192,9 +192,9 @@
                                 Profile
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="myPage">My orders</a>
-                                <a class="dropdown-item" href="mySettings">Settings</a>
-                                <a class="dropdown-item" href="/logout">Logout</a>
+                                <a class="dropdown-item" href="myPage"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp My page</a>
+                                <a class="dropdown-item" href="mySettings"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp Settings</a>
+                                <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp Log out</a>
                             </div>
                         </div>
                     </security:authorize>
