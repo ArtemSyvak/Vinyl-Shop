@@ -10,11 +10,6 @@
             <div class="col-md-3">
                 <sf:form action="save" method="post" modelAttribute="nullUser">
                     <div class="form-group">
-                        <label for="createUsername">Username</label>
-                        <sf:input path="username" id="createUsername" cssClass="form-control" placeholder='username'></sf:input>
-                        <sf:errors path="username"></sf:errors>
-                    </div>
-                    <div class="form-group">
                         <label for="createEmail">Email address</label>
                         <sf:input path="email" id="createEmail" cssClass="form-control" placeholder='email'></sf:input>
                         <sf:errors path="email"></sf:errors>

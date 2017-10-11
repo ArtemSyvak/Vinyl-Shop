@@ -7,19 +7,14 @@
 <sf:form method="post" modelAttribute="userSet" action="${pageContext.request.contextPath}/saveSettings">
     <table>
         <tr>
-            <td>Username:</td>
-            <td><sf:input path="username" value="${userSet.username}" readonly="true"></sf:input></td>
+            <td>Email:</td>
+            <td><sf:input path="email"  value="${userSet.email}"></sf:input></td>
             <br>
         </tr>
 
         <tr>
             <td>Full name:</td>
             <td><sf:input path="fullName" value="${userSet.fullName}"></sf:input></td>
-            <br>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><sf:input path="email"  value="${userSet.email}"></sf:input></td>
             <br>
         </tr>
         <tr>

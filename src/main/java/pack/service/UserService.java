@@ -7,10 +7,10 @@ import pack.model.UserInfo;
 public interface UserService {
 
     void save(User user);
-    User findByName(String username);
+    User findByEmail(String email);
     User findOne(int id);
     UserInfo findUserInfo(int id);
-    UserDetails loadUserByUsername(String username);
+    UserDetails loadUserByUsername(String email);
     void setUserSettings(User userModel);
 
 

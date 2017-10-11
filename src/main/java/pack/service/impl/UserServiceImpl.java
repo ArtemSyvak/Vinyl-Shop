@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return findByName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return findByEmail(email);
     }
 
     public void save(User user) {
@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userDAO.save(user);
     }
 
-    public User findByName(String username) {
-        return userDAO.findByUserName(username);
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
     }
 
     public User findOne(int id) {
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     public void setUserSettings(User modelUser) {
         System.out.println("From serviceImpl" + modelUser);
-        User user = userDAO.findByUserName(modelUser.getUsername());
+        User user = userDAO.findByEmail(modelUser.getEmail());
         if(user!=null){
             user.setFullName(modelUser.getFullName());
             user.setAddress(modelUser.getAddress());

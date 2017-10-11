@@ -55,9 +55,8 @@ public class MainController {
 
     @RequestMapping("myPage")
     private String toUserPage(Model model, Principal principal){
-        String username = principal.getName();
-        User user = userService.findByName(username);
-        String email = user.getEmail();
+        String email = principal.getName();
+        User user = userService.findByEmail(email);
         List<Order> list = orderService.findAllByCustomerEmail(email);
         List<OrderDetail> allOrderDetails = new ArrayList<OrderDetail>();
         for(Order order : list){
@@ -94,8 +93,8 @@ public class MainController {
 
     @GetMapping("mySettings")
     public String toSettings(Model model, Principal principal){
-        String username = principal.getName();
-        User userSet = userService.findByName(username);
+        String email = principal.getName();
+        User userSet = userService.findByEmail(email);
         model.addAttribute("userSet", userSet);
         return "settings";
     }

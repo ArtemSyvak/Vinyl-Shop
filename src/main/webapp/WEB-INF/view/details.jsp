@@ -35,11 +35,6 @@ hello!
                             <sf:input path="email"></sf:input>
                             <sf:errors path="email"></sf:errors>
                             <br>
-                            Username
-                            <br>
-                            <sf:input path="username"></sf:input>
-                            <sf:errors path="username"></sf:errors>
-                            <br>
                             Password
                             <br>
                             <sf:password path="password"></sf:password>

@@ -11,8 +11,8 @@
             <div class="modal-body">
                 <form action="/login" method="post">
                     <div class="form-group">
-                        <label for="usernameInput">Username</label>
-                        <input type="text" class="form-control" id="usernameInput" placeholder="enter your username" name="username">
+                        <label for="emailInput">Email</label>
+                        <input type="text" class="form-control" id="emailInput" placeholder="enter your email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="passwordInput">Password</label>

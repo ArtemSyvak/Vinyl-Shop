@@ -26,15 +26,10 @@ public class UserValidator implements Validator {
         }
 
         try {
-              if (user.getUsername().length()<=0||userService.findByName(user.getUsername()).isEnabled()){
-                errors.rejectValue("username", "error1", "invalid or already exists name");
+              if (user.getEmail().length()<=0||userService.findByEmail(user.getEmail()).isEnabled()){
+                errors.rejectValue("email", "error1", "invalid or already exists name");
             }
         }catch (NullPointerException e){}
-
-
-        if (user.getEmail().length()<=0){
-            errors.rejectValue("email", "error3", "invalid email");
-        }
 
     }
 }

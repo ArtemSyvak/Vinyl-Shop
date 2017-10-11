@@ -14,9 +14,8 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String username;
-    private String password;
     private String email;
+    private String password;
     private String address;
     private String phone;
     private String fullName;
@@ -36,10 +35,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-    public User(String username, String password, String email, String address, String phone, String fullName, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
-        this.username = username;
-        this.password = password;
+    public User(String email, String password, String address, String phone, String fullName, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
         this.email = email;
+        this.password = password;
         this.address = address;
         this.phone = phone;
         this.fullName = fullName;
@@ -57,10 +55,6 @@ public class User implements UserDetails {
     }
 
     public User() {
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -112,7 +106,7 @@ public class User implements UserDetails {
     }
 
     public String getUsername() {
-        return username;
+        return email;
     }
 
     public boolean isAccountNonExpired() {
@@ -152,9 +146,8 @@ public class User implements UserDetails {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", fullName='" + fullName + '\'' +

@@ -70,7 +70,7 @@ public class CartController {
         if(userInfo==null){
             userInfo = new UserInfo();
         }
-        User user = userService.findByName(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         userInfo.setName(user.getFullName());
         userInfo.setPhone(user.getPhone());
         userInfo.setAddress(user.getAddress());
@@ -89,8 +89,8 @@ public class CartController {
             return "userForm";
         }
         cart.setUserInfo(userInfo);
-        String username = principal.getName();
-        User user = userService.findByName(username);
+        String email = principal.getName();
+        User user = userService.findByEmail(email);
         user.setAddress(userInfo.getAddress());
         user.setPhone(userInfo.getPhone());
         user.setFullName(userInfo.getName());
