@@ -47,6 +47,12 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("createAccount")
+    public String toregistryPage(Model model){
+        model.addAttribute("nullUser", new User());
+        return "registry-page";
+    }
+
     @RequestMapping("myPage")
     private String toUserPage(Model model, Principal principal){
         String username = principal.getName();
