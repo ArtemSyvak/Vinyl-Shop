@@ -65,6 +65,46 @@ body{
     top: 10px;
     right: 16px;
 }
+.list-group-item-info{
+    width: 200px;
+    margin-left: 120px;
+    padding-left: 20px;
+    background-color: #17a2b8;
+    color: #fff;
+    transition: 0.2s;
+}
+a.list-group-link{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.2s;
+}
+a.list-group-link:hover{
+    padding-left: 15px;
+    color: #FF5A09;
+    transition: 0.2s;
+}
+
+a.nav-link>i{
+    font-size: 22px;
+    color: #17a2b8;
+    transition: 0.1s;
+}
+
+a.nav-link>i:hover{
+    color: #FF5A09;
+    transition: 0.1s;
+}
+.card{
+    margin: 10px 0;
+}
+.card-img-top{
+    height: 33%;
+}
+a{
+    color: #17a2b8;
+}
+
 
 
 
