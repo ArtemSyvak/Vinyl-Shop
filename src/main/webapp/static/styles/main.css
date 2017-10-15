@@ -97,6 +97,7 @@ a.nav-link>i:hover{
 }
 .card{
     margin: 10px 0;
+    transition: 0.4s;
 }
 .card-img-top{
     height: 33%;
@@ -104,7 +105,12 @@ a.nav-link>i:hover{
 a{
     color: #17a2b8;
 }
-
+.card:hover{
+    -webkit-box-shadow: 2px 2px 34px 1px rgba(0,0,0,0.65);
+    -moz-box-shadow: 2px 2px 34px 1px rgba(0,0,0,0.65);
+    box-shadow: 2px 2px 34px 1px rgba(0,0,0,0.65);
+    transition: 0.3s;
+}
 
 
 
