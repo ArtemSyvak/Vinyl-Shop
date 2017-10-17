@@ -1,12 +1,13 @@
 
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 footerFun" >
+<div class="container-fluid footer">
+    <div class="row justify-content-center">
+        <div class="col-md-4" >
             <br>
+            <h5 align="center">VinylShop</h5>
             <br>
-            <h3 align="center">Artem Syvak&nbsp;<a href="https://github.com/nikita-nikiforov/room705"><i class="fa fa-github" aria-hidden="true"></i></a>&nbsp;Nikita Nikiforov</h3>
+            <h5 align="center">Artem Syvak&nbsp;<a href="https://github.com/ArtemSyvak/Vinyl-Shop"><i class="fa fa-github" aria-hidden="true"></i></a>&nbsp;Nikita Nikiforov</h5>
             <br>
             <h5 align="center" style="margin-left: -25px">2017</h5>
         </div>

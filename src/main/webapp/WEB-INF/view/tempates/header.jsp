@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/style/main.css">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container">
         <a class="navbar-brand" href="/">VinylShop</a>

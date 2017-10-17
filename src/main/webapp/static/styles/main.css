@@ -1,5 +1,8 @@
 body{
-    background-color: #EFF1F3;
+    background-color: #BEF7E4;
+}
+.navbar{
+    border-bottom: 2px solid #11CD86 ;
 }
 .navbar-light .navbar-brand{
     color: #F4F4F4;
@@ -111,7 +114,44 @@ a{
     box-shadow: 2px 2px 34px 1px rgba(0,0,0,0.65);
     transition: 0.3s;
 }
-
+.admin-create{
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #FF5A09;
+}
+.admin-create .form-group>label{
+    font-weight: 500;
+    color: #fff;
+}
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+.footer{
+    margin-top: 350px;
+    background-color: #17a2b8;
+    color: #fff;
+    border-top: 3px solid #11CD86;
+}
+.fa-github{
+    font-size: 30px;
+    color: #35CE8D;
+    transition: 0.2s;
+}
+.fa-github:hover{
+    transition: 0.2s;
+    color: #FF5A09;
+}
+.delivery-info{
+    border-radius: 5px;
+    background-color: #58B4AB ;
+}
 
 
 

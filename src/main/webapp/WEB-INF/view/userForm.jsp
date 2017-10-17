@@ -3,31 +3,36 @@
 <%@include file="tempates/header.jsp"%>
 
 <sf:form method="post" modelAttribute="userInfo" action="toConfirmOrder">
-<h2>Enter delivery information:</h2>
 
-            Name *
-            <br>
-            <sf:input path="name" value="${userInfo.name}"/>
-            <br>
-            <sf:errors path="name"></sf:errors>
-            <br>
-            Phone
-            <br>
-            <td><sf:input path="phone" value="${userInfo.phone}"/></td>
-            <sf:errors path="phone"></sf:errors>
-            <br>
-            Address*
-            <br>
-            <sf:input path="address" value="${userInfo.address}"/>
-            <sf:errors path="address"></sf:errors>
+    <div class="container" style="margin-top: 10px">
+        <div class="row justify-content-center">
+            <div class="col-md-3 delivery-info">
+                <br>
+                <h5 align="center">Enter delivery information:</h5>
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <sf:input path="name" value="${userInfo.name}" id="name" cssClass="form-control"/>
+                    <sf:errors path="name"></sf:errors>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <sf:input path="phone" value="${userInfo.phone}" id="phone" cssClass="form-control"/>
+                    <sf:errors path="phone"></sf:errors>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <sf:input path="address" value="${userInfo.phone}" id="address" cssClass="form-control"/>
+                    <sf:errors path="address"></sf:errors>
+                </div>
+                <button type="submit" class="btn btn-info">Enter</button>
+                <button type="reset" class="btn btn-info">Reset</button>
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+            </div>
+        </div>
+    </div>
 
-            &nbsp;
-             <br>
-             <input type="submit" value="Submit" />
-             <input type="reset" value="Reset" />
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
 </sf:form>
 
 <%@include file="tempates/footer.jsp"%>
