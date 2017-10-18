@@ -139,18 +139,25 @@ a{
     color: #fff;
     border-top: 3px solid #11CD86;
 }
-.fa-github{
+i.fa.fa-github{
     font-size: 30px;
     color: #35CE8D;
     transition: 0.2s;
 }
-.fa-github:hover{
+i.fa.fa-github:hover{
     transition: 0.2s;
     color: #FF5A09;
 }
 .delivery-info{
     border-radius: 5px;
     background-color: #58B4AB ;
+}
+.btn-outline-light{
+    transition: 0.5s;
+}
+.btn-outline-light:hover{
+    background-color: #11CD86;
+    transition: 0.5s;
 }
 
 
