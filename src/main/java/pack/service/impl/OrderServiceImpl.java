@@ -30,16 +30,18 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ProductDAO productDAO;
 
-    public Order saveOrder(CartInfo cartInfo) {
+    public Order saveOrder(OrderInfo orderInfo, CartInfo cartInfo) {
         Order order = new Order();
         order.setOrderDate(new Date());
         order.setAmount(cartInfo.getAmountTotal());
 
-        UserInfo userInfo = cartInfo.getUserInfo();
-        order.setCustomerName(userInfo.getName());
-        order.setCustomerEmail(userInfo.getEmail());
-        order.setCustomerPhone(userInfo.getPhone());
-        order.setCustomerAddress(userInfo.getAddress());
+        order.setCustomerName(orderInfo.getCustomerName());
+        order.setCustomerSurname(orderInfo.getCustomerSurname());
+        order.setCustomerEmail(orderInfo.getCustomerEmail());
+        order.setCustomerPhone(orderInfo.getCustomerPhone());
+        order.setCustomerAddress(orderInfo.getCustomerAddress());
+        order.setComment(orderInfo.getComment());
+        order.setPayment(orderInfo.getPayment());
 
         orderDAO.save(order);
 
@@ -52,15 +54,50 @@ public class OrderServiceImpl implements OrderService {
             detail.setQuantity(line.getQuantity());
 
             int productId = line.getProductInfo().getProductId();
-            Product product = this.productDAO.findOne(productId);
+            Product product = productDAO.findOne(productId);
             detail.setProduct(product);
 
             orderDetailDAO.save(detail);
 
         }
-        cartInfo.setOrderId(order.getId());
+        orderInfo.setOrderId(order.getId());
         return order;
     }
+
+    //  старый
+//    public Order saveOrder(CartInfo cartInfo) {
+//        Order order = new Order();
+//        order.setOrderDate(new Date());
+//        order.setAmount(cartInfo.getAmountTotal());
+//
+//        UserInfo userInfo = cartInfo.getUserInfo();
+//        order.setCustomerName(userInfo.getFirstname());
+//        order.setCustomerSurname(userInfo.getSurname());
+//        order.setCustomerEmail(userInfo.getEmail());
+//        order.setCustomerPhone(userInfo.getPhone());
+//        order.setCustomerAddress(userInfo.getAddress());
+//
+//        orderDAO.save(order);
+//
+//        List<CartLineInfo> lines = cartInfo.getCartLines();
+//        for(CartLineInfo line : lines){
+//            OrderDetail detail = new OrderDetail();
+//            detail.setOrder(order);
+//            detail.setAmount(line.getAmount());
+//            detail.setPrice(line.getProductInfo().getPrice());
+//            detail.setQuantity(line.getQuantity());
+//
+//            int productId = line.getProductInfo().getProductId();
+//            Product product = this.productDAO.findOne(productId);
+//            detail.setProduct(product);
+//
+//            orderDetailDAO.save(detail);
+//
+//        }
+//        cartInfo.setOrderId(order.getId());
+//        return order;
+//    }
+
     public Order findOrder(int orderId){
          return orderDAO.findOne(orderId);
     }
@@ -71,9 +108,10 @@ public class OrderServiceImpl implements OrderService {
         if(order == null){
             return null;
         }
-            return new OrderInfo(order.getId(), order.getOrderDate(), order.getAmount(),
-                    order.getCustomerName(),order.getCustomerAddress(), order.getCustomerEmail(),
-                    order.getCustomerPhone());
+        return new OrderInfo(order.getId(), order.getOrderDate(), order.getAmount(),
+                    order.getCustomerName(), order.getCustomerSurname(), order.getCustomerAddress(),
+                    order.getCustomerEmail(), order.getCustomerPhone(), order.getComment(),
+                    order.getPayment());
     }
 
     public List<OrderDetailInfo> listOrderDetailInfos(int orderId) {

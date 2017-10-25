@@ -47,7 +47,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         System.out.println("From serviceImpl" + modelUser);
         User user = userDAO.findByEmail(modelUser.getEmail());
         if(user!=null){
-            user.setFullName(modelUser.getFullName());
+            user.setFirstname(modelUser.getFirstname());
+            user.setSurname(modelUser.getSurname());
             user.setAddress(modelUser.getAddress());
             user.setPhone(modelUser.getPhone());
             user.setEmail(modelUser.getEmail());

@@ -11,10 +11,16 @@ Hello!
 <div class="customer-info-container">
     <h3>Customer Information:</h3>
     <ul>
-        <li>Name: ${cartInfo.userInfo.name}</li>
-        <li>Email: ${cartInfo.userInfo.email}</li>
-        <li>Phone: ${cartInfo.userInfo.phone}</li>
-        <li>Address: ${cartInfo.userInfo.address}</li>
+        <li>Name: ${wrapper.orderInfo.customerName}</li>
+        <li>Surname: ${wrapper.orderInfo.customerSurname}</li>
+        <li>Email: ${wrapper.orderInfo.customerEmail}</li>
+        <li>Phone: ${wrapper.orderInfo.customerPhone}</li>
+        <li>Address: ${wrapper.orderInfo.customerAddress}</li>
+    </ul>
+    <h3>Order Information:</h3>
+    <ul>
+        <li>Comment: ${wrapper.orderInfo.comment}</li>
+        <li>Payment method: ${wrapper.orderInfo.payment}</li>
     </ul>
     <h3>Cart Summary:</h3>
     <ul>

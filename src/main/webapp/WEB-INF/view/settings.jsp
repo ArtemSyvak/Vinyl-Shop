@@ -13,8 +13,13 @@
         </tr>
 
         <tr>
-            <td>Full name:</td>
-            <td><sf:input path="fullName" value="${userSet.fullName}"></sf:input></td>
+            <td>First name:</td>
+            <td><sf:input path="firstname" value="${userSet.firstname}"></sf:input></td>
+            <br>
+        </tr>
+        <tr>
+            <td>Surname:</td>
+            <td><sf:input path="surname" value="${userSet.surname}"></sf:input></td>
             <br>
         </tr>
         <tr>

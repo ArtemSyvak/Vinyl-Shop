@@ -24,7 +24,7 @@ public class UserInfoValidator implements Validator {
 
         UserInfo info = (UserInfo) target;
 
-        if (info.getName().length()<=0){
+        if (info.getFirstname().length()<=0){
             errors.rejectValue("name", "error", "invalid name");
         }
 

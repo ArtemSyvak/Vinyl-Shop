@@ -4,22 +4,32 @@ import pack.entity.User;
 
 public class UserInfo {
 
-    public String name;
+    public String firstname;
+    public String surname;
     public String address;
     public String email;
     public String phone;
 
     private boolean valid;
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public UserInfo() {
+
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getAddress() {
@@ -55,10 +65,18 @@ public class UserInfo {
     }
 
     public UserInfo(User user) {
-        this.name = user.getFullName();
+        this.firstname = user.getFirstname();
         this.address = user.getAddress();
         this.email = user.getEmail();
         this.phone = user.getPhone();
+    }
+
+    public UserInfo(String firstname, String surname, String address, String email, String phone) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
     }
 }
 

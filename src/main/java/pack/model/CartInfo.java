@@ -36,6 +36,7 @@ public class CartInfo {
         return null;
     }
 
+    // возможно, переписать-----------------------------------------------------------------------
     public void addProduct(ProductInfo productInfo, int quantity) {
 
         CartLineInfo line = this.findLineById(productInfo.getProductId());

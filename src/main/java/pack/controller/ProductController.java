@@ -9,6 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import pack.entity.User;
 import pack.service.ProductService;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 
 @RestController
 public class ProductController {
@@ -16,9 +21,10 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public ModelAndView list(@PageableDefault(page = 0, value = 9) final Pageable pageable, Model model){
-            model.addAttribute("nullUser" , new User());
-            return new ModelAndView("products", "page", productService.listAllByPage(pageable));
+    public ModelAndView list(@PageableDefault(page = 0, value = 9) final Pageable pageable){
+        ModelAndView modelAndView = new ModelAndView("products");
+        modelAndView.addObject("page", productService.listAllByPage(pageable));
+        return modelAndView;
     }
 
 }

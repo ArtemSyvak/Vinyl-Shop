@@ -13,11 +13,50 @@ public class Order {
     private double amount;
 
     private String customerName;
+    private String customerSurname;
     private String customerAddress;
     private String customerEmail;
     private String customerPhone;
+    private String comment;
+    private String payment;
+
+    public String getCustomerSurname() {
+        return customerSurname;
+    }
+
+    public void setCustomerSurname(String customerSurname) {
+        this.customerSurname = customerSurname;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
 
     public Order() {
+    }
+
+    public Order(Date orderDate, double amount, String customerName, String customerSurname, String customerAddress, String customerEmail, String customerPhone, String comment, String payment) {
+        this.orderDate = orderDate;
+        this.amount = amount;
+        this.customerName = customerName;
+        this.customerSurname = customerSurname;
+        this.customerAddress = customerAddress;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
+        this.comment = comment;
+        this.payment = payment;
     }
 
     public Order(Date orderDate, double amount, String customerName, String customerAddress, String customerEmail, String customerPhone) {

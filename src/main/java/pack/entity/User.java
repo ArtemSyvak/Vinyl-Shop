@@ -18,14 +18,37 @@ public class User implements UserDetails {
     private String password;
     private String address;
     private String phone;
-    private String fullName;
+    private String firstname;
+    private String surname;
 
-    public String getFullName() {
-        return fullName;
+    public User(String email, String password, String address, String phone, String firstname, String surname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
+        this.role = role;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     private boolean accountNonExpired = true;
@@ -35,12 +58,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-    public User(String email, String password, String address, String phone, String fullName, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+    public User(String email, String password, String address, String phone, String firstname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
         this.email = email;
         this.password = password;
         this.address = address;
         this.phone = phone;
-        this.fullName = fullName;
+        this.firstname = firstname;
         this.accountNonExpired = accountNonExpired;
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
@@ -150,7 +173,8 @@ public class User implements UserDetails {
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", fullName='" + fullName + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", accountNonExpired=" + accountNonExpired +
                 ", accountNonLocked=" + accountNonLocked +
                 ", credentialsNonExpired=" + credentialsNonExpired +

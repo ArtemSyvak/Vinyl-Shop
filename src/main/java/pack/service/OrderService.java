@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    Order saveOrder(CartInfo cartInfo);
+    Order saveOrder(OrderInfo orderInfo, CartInfo cartInfo);
     OrderInfo getOrderInfo(int orderId);
     List<OrderDetailInfo> listOrderDetailInfos(int orderId);
     List<Order> findAllByCustomerEmail(String email);

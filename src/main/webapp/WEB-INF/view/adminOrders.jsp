@@ -9,6 +9,8 @@
         <h3>Customer Information:</h3>
         <ul>
             <li>Name: ${order.customerName}</li>
+            <li>Surname: ${order.customerSurname}</li>
+
             <li>Email: ${order.customerEmail}</li>
             <li>Phone: ${order.customerPhone}</li>
             <li>Address: ${order.customerAddress}</li>
