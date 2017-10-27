@@ -134,4 +134,21 @@ public class OrderInfo {
     public void setDetails(List<OrderDetailInfo> details) {
         this.details = details;
     }
+
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "orderId=" + orderId +
+                ", orderDate=" + orderDate +
+                ", amount=" + amount +
+                ", customerName='" + customerName + '\'' +
+                ", customerSurname='" + customerSurname + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", comment='" + comment + '\'' +
+                ", payment='" + payment + '\'' +
+                ", details=" + details +
+                '}';
+    }
 }

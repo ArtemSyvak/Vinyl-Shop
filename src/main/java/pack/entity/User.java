@@ -16,15 +16,13 @@ public class User implements UserDetails {
     private int id;
     private String email;
     private String password;
-    private String address;
     private String phone;
     private String firstname;
     private String surname;
 
-    public User(String email, String password, String address, String phone, String firstname, String surname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+    public User(String email, String password, String phone, String firstname, String surname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
         this.email = email;
         this.password = password;
-        this.address = address;
         this.phone = phone;
         this.firstname = firstname;
         this.surname = surname;
@@ -58,10 +56,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-    public User(String email, String password, String address, String phone, String firstname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
+    public User(String email, String password, String phone, String firstname, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Role role) {
         this.email = email;
         this.password = password;
-        this.address = address;
         this.phone = phone;
         this.firstname = firstname;
         this.accountNonExpired = accountNonExpired;
@@ -148,14 +145,6 @@ public class User implements UserDetails {
         return enabled;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -171,7 +160,6 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +

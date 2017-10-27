@@ -28,11 +28,6 @@
             <br>
         </tr>
         <tr>
-            <td>Address:</td>
-            <td><sf:input path="address" value="${userSet.address}"></sf:input></td>
-            <br>
-        </tr>
-        <tr>
             <td>Password:</td>
             <td><form:password path="password"></form:password></td>
             <br>

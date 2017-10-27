@@ -77,7 +77,9 @@ public class MainController {
         if (result.hasErrors()){
             return "index";
         }
-        userService.save(user);
+        System.out.println("before: " + user);
+        userService.saveWithPassword(user);
+        System.out.println("after: " + user);
 //        mailService.send(user.getEmail());
         return "index";
     }

@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="customerEmail">Email *</label>
-                    <sf:input path="orderInfo.customerEmail" value="${orderInfo.customerEmail}" id="customerEmail" cssClass="form-control"/>
+                    <sf:input path="orderInfo.customerEmail" value="${orderInfo.customerEmail}" id="customerEmail" cssClass="form-control" name="email"/>
                     <sf:errors path="orderInfo.customerEmail"></sf:errors>
                 </div>
                 <div class="form-group">
@@ -46,11 +46,20 @@
 
                 <security:authorize  access="!hasRole('ROLE_USER')">
                     <div class="form-group">
-                        Would you like to register in our shop?
-                        <label for="setPassword">Password *</label>
-                        <sf:input path="nullUser.password" value="${nullUser.password}" id="setPassword" cssClass="form-control"
-                                  type="password"/>
-                        <sf:errors path="nullUser.password"></sf:errors>
+                        <div class="col-auto">
+                            <label data-toggle="collapse" data-target="#collapseOne" class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                <span class="custom-control-description">Would you like to register in our shop?</span>
+                                <span class="custom-control-indicator"></span>
+                                <input type="checkbox" class="custom-control-input"/>
+                            </label>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <label for="setPassword">Password *</label>
+                            <sf:input path="nullUser.password" name="password" value="${nullUser.password}" id="setPassword" cssClass="form-control"
+                                      type="password"/>
+                            <sf:errors path="nullUser.password"></sf:errors>
+                        </div>
+
                     </div>
                 </security:authorize>
 

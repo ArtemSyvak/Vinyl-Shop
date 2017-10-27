@@ -27,6 +27,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public void save(User user) {
+        userDAO.save(user);
+    }
+
+    public void saveWithPassword(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
     }
@@ -49,7 +53,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if(user!=null){
             user.setFirstname(modelUser.getFirstname());
             user.setSurname(modelUser.getSurname());
-            user.setAddress(modelUser.getAddress());
             user.setPhone(modelUser.getPhone());
             user.setEmail(modelUser.getEmail());
             user.setPassword(passwordEncoder.encode(modelUser.getPassword()));

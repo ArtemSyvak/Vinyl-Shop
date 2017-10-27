@@ -66,7 +66,6 @@ public class UserInfo {
 
     public UserInfo(User user) {
         this.firstname = user.getFirstname();
-        this.address = user.getAddress();
         this.email = user.getEmail();
         this.phone = user.getPhone();
     }

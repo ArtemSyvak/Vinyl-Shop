@@ -12,6 +12,7 @@ public interface UserService {
     UserInfo findUserInfo(int id);
     UserDetails loadUserByUsername(String email);
     void setUserSettings(User userModel);
+    void saveWithPassword(User user);
 
 
 }

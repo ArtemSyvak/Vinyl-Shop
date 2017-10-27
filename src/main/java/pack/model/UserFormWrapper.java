@@ -5,10 +5,10 @@ import pack.entity.User;
 import javax.validation.Valid;
 
 public class UserFormWrapper {
-    @Valid
+//    @Valid
     private User nullUser = new User();
 
-    @Valid
+//    @Valid
     private OrderInfo orderInfo = new OrderInfo();
 
     public User getNullUser() {
@@ -25,5 +25,13 @@ public class UserFormWrapper {
 
     public void setOrderInfo(OrderInfo orderInfo) {
         this.orderInfo = orderInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "UserFormWrapper{" +
+                "nullUser=" + nullUser +
+                ", orderInfo=" + orderInfo +
+                '}';
     }
 }
