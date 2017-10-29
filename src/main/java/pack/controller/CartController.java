@@ -2,6 +2,14 @@ package pack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,9 +25,13 @@ import pack.service.OrderService;
 import pack.service.ProductService;
 import pack.service.UserService;
 import pack.validator.OrderInfoValidator;
+import pack.validator.UserFormWrapperValidator;
 import pack.validator.UserInfoValidator;
 import pack.validator.UserValidator;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.Principal;
 
@@ -46,6 +58,12 @@ public class CartController {
 
     @Autowired
     UserInfoValidator infoValidator;
+
+    @Autowired
+    UserFormWrapperValidator userFormWrapperValidator;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     //PRINCIPAL
 
@@ -92,38 +110,20 @@ public class CartController {
         wrapper.setOrderInfo(orderInfo);
 
         model.addAttribute("wrapper", wrapper);
-        System.out.println("wrapper in toUserForm^ " + wrapper);
+        System.out.println("wrapper in toUserForm: " + wrapper);
 
         return "userForm";
     }
 
-    /// переписать логику
-//    @RequestMapping("toUserForm")
-//    public String toUserForm(Model model, Principal principal){
-//        CartInfo cartInfo = cart;
-//        UserInfo userInfo = cart.getUserInfo();
-//        if(userInfo==null){
-//            userInfo = new UserInfo();
-//        }
-//        User user = userService.findByEmail(principal.getName());
-//        userInfo.setFirstname(user.getFirstname());
-//        userInfo.setSurname(user.getSurname());
-//        userInfo.setPhone(user.getPhone());
-//        userInfo.setAddress(user.getAddress());
-//        userInfo.setEmail(user.getEmail());
-//        model.addAttribute("userInfo", userInfo);
-//        model.addAttribute("cartForm", cartInfo);
-//        return "userForm";
-//    }
-
     @PostMapping("toConfirmOrder")
-    public String userFormSave(@ModelAttribute("wrapper") /*@Valid*/ UserFormWrapper wrapper, /*BindingResult result,*/
-                               Principal principal, Model model){
+    public String userFormSave(@ModelAttribute("wrapper") @Valid UserFormWrapper wrapper, BindingResult result,
+                               Principal principal, Model model, HttpServletRequest request,
+                               HttpServletResponse response) throws ServletException {
 
-        /*System.out.println("hello! "+result.hasErrors());
         if (result.hasErrors()){
             return "userForm";
-        }*/
+        }
+
         sessionOrder.setCustomerEmail(wrapper.getOrderInfo().getCustomerEmail());
         sessionOrder.setCustomerName(wrapper.getOrderInfo().getCustomerName());
         sessionOrder.setCustomerSurname(wrapper.getOrderInfo().getCustomerSurname());
@@ -133,43 +133,30 @@ public class CartController {
         sessionOrder.setPayment(wrapper.getOrderInfo().getPayment());
 
 
-
-        if(userService.findByEmail(sessionOrder.getCustomerEmail()) == null){
-            if(wrapper.getNullUser().getPassword() != "") {
-                User user = new User();
-                user.setPassword(wrapper.getNullUser().getPassword());
-                userService.saveWithPassword(user);
-            }
+     if(userService.findByEmail(sessionOrder.getCustomerEmail()) == null){
+        if(!wrapper.getNullUser().getPassword().equals("")) {
+            User user = new User();
+            String pass = wrapper.getNullUser().getPassword();
+            user.setPassword(pass);
+            user.setEmail(sessionOrder.getCustomerEmail());
+            System.out.println(user);
+            userService.saveWithPassword(user);
+            UserDetails userDetails = userService.loadUserByUsername(user.getEmail());
+            PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken
+                    = new PreAuthenticatedAuthenticationToken(userDetails, pass, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(preAuthenticatedAuthenticationToken);
+            user.setFirstname(sessionOrder.getCustomerName());
+            user.setSurname(sessionOrder.getCustomerSurname());
+            user.setPhone(sessionOrder.getCustomerPhone());
+            userService.save(user);
         }
+    }
 
-        CartInfo cartInfo = cart;
+    CartInfo cartInfo = cart;
         model.addAttribute("cartInfo", cartInfo);
         model.addAttribute("wrapper", wrapper);
         return "confirmOrder";
-    }
-
-        // старый
-//    @PostMapping("toConfirmOrder")
-//    public String userFormSave(@ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result,
-//                               Model model,
-//                               Principal principal){
-//        System.out.println("hello! "+result.hasErrors());
-//        if (result.hasErrors()){
-//            return "userForm";
-//        }
-//        cart.setUserInfo(userInfo);
-//        String email = principal.getName();
-//        User user = userService.findByEmail(email);
-//        user.setAddress(userInfo.getAddress());
-//        user.setPhone(userInfo.getPhone());
-//        user.setFullName(userInfo.getName());
-//        userService.save(user);
-//        cart.getUserInfo().setEmail(user.getEmail());
-//
-//        CartInfo cartInfo = cart;
-//        model.addAttribute("cartInfo", cartInfo);
-//        return "confirmOrder";
-//    }
+}
 
     @PostMapping("confirmOrder")
     public String toFinalPage(Model model){
@@ -197,10 +184,10 @@ public class CartController {
 //    }
 
     /// старые биндеры
-//    @InitBinder("userInfo")
-//    public void binder(WebDataBinder webDataBinder) {
-//        webDataBinder.setValidator(infoValidator);
-//    }
+    @InitBinder("wrapper")
+    public void userFormWrapperBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(userFormWrapperValidator);
+    }
 //
 //    @InitBinder("orderInfo")
 //    public void orderBinder(WebDataBinder webDataBinder) {

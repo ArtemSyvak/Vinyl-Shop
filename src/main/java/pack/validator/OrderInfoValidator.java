@@ -15,7 +15,7 @@ public class OrderInfoValidator implements Validator {
         OrderInfo orderInfo = (OrderInfo) target;
 
         if(orderInfo.getCustomerName().length()<=0){
-            errors.rejectValue("firstname", "error1", "Invalid firstname");
+            errors.rejectValue("orderInfo.firstname", "error1", "Invalid firstname");
         }
 
         if(orderInfo.getCustomerSurname().length()<=0){
