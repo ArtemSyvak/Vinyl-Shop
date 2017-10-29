@@ -28,14 +28,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="products">Products</a>
+                    <a class="nav-link" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <security:authorize  access="hasRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a href="admin/admin_page" class="nav-link">Add Product</a></li>
-                    <li class="nav-item"><a href="admin/admin_orders" class="nav-link">Orders</a></li>
+                    <li class="nav-item"><a href="/admin_page" class="nav-link">Add Product</a></li>
+                    <li class="nav-item"><a href="/admin_orders" class="nav-link">Orders</a></li>
                 </security:authorize>
             </ul>
             <ul class="navbar-nav">
@@ -50,24 +50,27 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a href="myCart" class="nav-link">Cart</a>
+                    <a href="/myCart" class="nav-link">Cart</a>
                 </li>
                 <li class="nav-item">
                     <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#login-modal">Login</a>
                     </security:authorize>
-                    <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                    <security:authorize access="hasAnyRole('ROLE_USER')">
                         <div class="dropdown">
                             <a class="btn btn-info dropdown-toggle" style="line-height: 1.5;font-weight: 500;" href="#" role="button"
                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Profile
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="myPage"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp My page</a>
-                                <a class="dropdown-item" href="mySettings"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp Settings</a>
+                                <a class="dropdown-item" href="/myPage"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp My page</a>
+                                <a class="dropdown-item" href="/mySettings"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp Settings</a>
                                 <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp Log out</a>
                             </div>
                         </div>
+                    </security:authorize>
+                    <security:authorize access="hasAnyRole('ROLE_ADMIN')">
+                        <a href="/logout" class="nav-link">Log out</a>
                     </security:authorize>
                 </li>
             </ul>

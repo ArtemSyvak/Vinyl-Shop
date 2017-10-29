@@ -61,7 +61,7 @@
                     <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#login-modal">Login</a>
                     </security:authorize>
-                    <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                    <security:authorize access="hasAnyRole('ROLE_USER')">
                         <div class="dropdown">
                             <a class="btn btn-info dropdown-toggle" style="line-height: 1.5;font-weight: 500;" href="#" role="button"
                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,6 +73,9 @@
                                 <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp Log out</a>
                             </div>
                         </div>
+                    </security:authorize>
+                    <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                        <a href="/logout" class="nav-link">Log out</a>
                     </security:authorize>
                 </li>
             </ul>

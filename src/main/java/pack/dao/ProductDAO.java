@@ -14,5 +14,5 @@ public interface ProductDAO extends JpaRepository<Product, Integer>, PagingAndSo
 
 
     @Query("select o from Product o where o.genre=:genre")
-    List<Product> findByGenre(@Param("genre") String genre);
+    Page<Product> findByGenre(@Param("genre") String genre, Pageable pageable);
 }

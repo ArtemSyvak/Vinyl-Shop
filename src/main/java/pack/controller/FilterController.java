@@ -1,6 +1,9 @@
 package pack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +32,12 @@ public class FilterController {
 
 
 
-    @RequestMapping("genre/{name}")
-    public String genres(@PathVariable(value = "name") String name, Model model){
-        model.addAttribute("nullUser" , new User());
-        List<Product> genreList = productService.findByGenre(name);
-        model.addAttribute("genreList", genreList);
-        return "genres";
+    @RequestMapping("**/genre/{genreName}")
+    public String genres(@PathVariable(value = "genreName") String genreName,
+                         @PageableDefault(page = 0, value = 9) final Pageable pageable, Model model){
+        Page<Product> genreList = productService.listGenreByPage(genreName, pageable);
+        model.addAttribute("page", genreList);
+        return "products";
     }
 
     @GetMapping("/genre/genre/blues")
@@ -89,21 +92,11 @@ public class FilterController {
     public String backalternative(){
         return "redirect:/genre/alternative";
     }
-    @GetMapping("/genre/products")
-    public String backproducts(){
-        return "redirect:/products";
-    }
-
-    @GetMapping("/genre/myPage")
-    public String backmyPage(){
-        return "redirect:/myPage";
-    }
 
 
 
     @GetMapping("/genre/details-{id}")
     public String toDetailsPage(@PathVariable("id") int id, Model model){
-        model.addAttribute("nullUser", new User());
         Product product = productService.findOne(id);
         model.addAttribute("product",product);
         return "details";

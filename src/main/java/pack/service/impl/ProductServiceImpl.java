@@ -51,7 +51,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    public List<Product> findByGenre(String genre) {
-        return productDAO.findByGenre(genre);
+//    public List<Product> findByGenre(String genre) {
+//        return productDAO.findByGenre(genre);
+//    }
+
+    public Page<Product> listGenreByPage(String genreName, Pageable pageable) {
+        return productDAO.findByGenre(genreName, pageable);
     }
 }

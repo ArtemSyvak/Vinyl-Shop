@@ -20,5 +20,6 @@ public interface ProductService {
 
     Page<Product> listAllByPage(Pageable pageable);
 
-    List<Product> findByGenre(String genre);
+//    List<Product> findByGenre(String genre);
+    Page<Product> listGenreByPage(String genre, Pageable pageable);
 }
